@@ -1,0 +1,174 @@
+/*+++++++++++++++++++++++++++++++ESTILO FONDO DE PANTALLA+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+body {
+	background-image: url(../imagen/ww.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	font-family: arial;
+	font-variant: small-caps;
+	color: #163E69;
+}
+ 
+ /*+++++++++++++++++++++++++++++++ESTILO A LA PRIMERA LETRAS  MAYUSCULA SEGUIDA DE LAS DEMAS MAYUSCULA++++++++++++++++++++++++++++++++++++*/
+label{
+	font-variant: small-caps;
+	font-size: 18px;
+	color: #163E69;	
+}
+caption{
+	font-variant: small-caps;
+	font-size: 18px;
+	color: #163E69;
+}
+td{
+	font-variant: small-caps;
+	font-size: 18px;
+	color: #163E69;		
+}
+	
+	/*+++++++++++++++++++++++++++++++ESTILO DE TITULO +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+	
+h1,h2{
+	color: #163E69;
+	text-align: center; 
+	font-variant: small-caps;
+}
+input,textarea{
+	text-align: center;
+}
+/*+++++++++++++++++Estilo a los campos con "*" +++++++++++++++++++++++++++++*/
+span.red{
+	color: red;
+}
+
+/*+++++++++++++++++++++++++++++++Menu+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+
+.menu {
+	text-align: center;
+	font-size: 0.7em;
+	margin-bottom: 80px;
+	width: 900px;
+}
+.gen {
+	margin-left: 60px;
+}
+.ind {
+	margin-left: 170px;
+}
+.menu ul {
+	padding-left: 0px;
+	list-style-type: none;
+}
+.menu ul li.nivel1 {
+	float: left;
+	width: 110px;
+	margin-right: 2px;
+}
+.menu ul li a {
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	background-color: #0AA2F3;
+	border: solid 1px #fff;
+	padding: 8px;
+	position: relative;
+	font-size: 14px;
+	font-family: arial;
+	font-variant: small-caps;
+}
+.menu ul li:hover {
+	position: relative;
+}
+.menu ul li a:hover, .menu ul li:hover a.nivel1 {
+	background-color: #0A60F3;
+	color: #000;
+	position: relative;
+}
+.menu ul li a.nivel1 {
+	display: block!important;
+	display: none;
+	position: relative;
+}
+.menu ul li ul {
+	display: none;
+}
+.menu ul li a:hover ul, .menu ul li:hover ul {
+	display: block;
+	position: absolute;
+	left: 0px;
+}
+.menu ul li ul li a {
+	width: 180px;
+	padding: 6px 0px 8px 0px;
+	border-top-color: #000;
+}
+.menu ul li ul li a:hover {
+	border-top-color: #000;
+	position: relative;
+}
+
+/*+++++++++++++++++++++++++++++++ESTILO PARA LAS TABLAS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+.tabla{
+	padding: 10px;
+	width: 800px;
+	margin: auto;
+	background-color: #fff;
+	border-spacing: 20px;
+	border-collapse: separate;
+	border-radius: 15px 15px 15px 15px;
+	box-shadow:0 0 15px #036;
+}
+.nombre{
+	text-align: right;
+	width: 800px;
+}
+.contenedor{
+	background-color: #fff;
+	border-radius: 15px 15px 15px 15px;
+	margin: auto;
+	padding: 1%;
+	width: 900px;
+}
+.membrete{
+	margin: auto;
+	width: 800px;	
+}
+.resul{
+	color: red;
+}
+
+/*+++++++++++++++++ TABLA DE CONSULTA +++++++++++++++++++++++++++++*/
+.tab_con {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.th_con {
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	background: #87CEFA;
+    border-top: 4px solid #87CEFA;
+    border-bottom: 1px solid #fff;
+    color: #039;
+}
+
+.td_con {
+	padding: 8px;
+	background: #F0F8FF;
+	border-bottom: 1px solid #fff;
+    color: #669;
+    border-top: 1px solid transparent;
+}
+
+.tr_con:hover .td_con {
+	background: #ADD8E6;
+	color: #339;
+}
