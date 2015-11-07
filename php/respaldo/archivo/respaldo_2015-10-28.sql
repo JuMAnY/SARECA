@@ -89,7 +89,7 @@ CREATE TABLE `prestamo` (
   CONSTRAINT `prestamo_ibfk_3` FOREIGN KEY (`Id_usuario`) REFERENCES `usuario` (`Id`) ON UPDATE CASCADE,
   CONSTRAINT `prestamo_ibfk_4` FOREIGN KEY (`Carnet`) REFERENCES `persona` (`Carnet`) ON UPDATE CASCADE,
   CONSTRAINT `prestamo_ibfk_5` FOREIGN KEY (`Serial_equipo`) REFERENCES `equipo_audiovisual` (`Serial`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +98,7 @@ CREATE TABLE `prestamo` (
 
 LOCK TABLES `prestamo` WRITE;
 /*!40000 ALTER TABLE `prestamo` DISABLE KEYS */;
-INSERT INTO `prestamo` VALUES (1,'40fg9e','2015-10-07','reparacion',234234,1),(2,'02e5rt','2015-10-07','reparacion',10300601,1),(3,'02e5rt','2015-10-07','reparacion',10300601,1),(4,'40fg9e','2015-10-07','reparacion',5546456,1),(5,'02e5rt','2015-10-07','admin',10300601,1),(6,'02e5rt','2015-10-08','admin',10300601,1),(7,'40fg9e','2015-10-08','admin',10300601,2);
+INSERT INTO `prestamo` VALUES (1,'40fg9e','2015-10-07','reparacion',234234,1),(2,'02e5rt','2015-10-07','reparacion',10300601,1),(3,'02e5rt','2015-10-07','reparacion',10300601,1),(4,'40fg9e','2015-10-07','reparacion',5546456,1),(5,'02e5rt','2015-10-07','admin',10300601,1),(6,'02e5rt','2015-10-08','admin',10300601,1),(7,'40fg9e','2015-10-08','admin',10300601,2),(8,'02e5rt','2015-10-15','admin',10300601,1);
 /*!40000 ALTER TABLE `prestamo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-10 12:58:18
+-- Dump completed on 2015-10-28 17:14:30
