@@ -18,7 +18,7 @@
 				include("menu/menu.php");
 			?>
 			
-			<!-- contendor de la pagina -->
+			<!-- INICIO DEL CONTENEDOR DE LA PAGINA -->
 			<div class="container">
 				<div class="bs-docs-section">
 					<div class="page-header">
@@ -33,9 +33,11 @@
 					</div>
 				</div>
 			</div>
+			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
+			<!-- DIV para manejar el footer de manera dinamica -->
 			<div id="push"></div>
 		</div>
-
+		<!-- INICIO DEL PIE DE PAGINA -->
 		<div id="footer">
 			<div class="container">
 				<p class="muted credit">
@@ -44,6 +46,7 @@
 				</p>
 			</div>
 		</div>
+		<!-- FIN DEL PIE DE PAGINA -->
 
 		<script src="../js/jquery-1.11.3.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
