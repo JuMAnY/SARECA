@@ -1,3 +1,4 @@
+<!-- INICIO DE LA BARRA DE NAVEGACION -->
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -71,10 +72,35 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> <?=$_SESSION['nombre']?><span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="cambio_pass_f.php"><span class="glyphicon glyphicon-lock"></span> Cambiar Contraseña</a></li>
-						<li><a href="#" OnClick="confir_accion('¿Realmente desea salir del sistema?','../php/sesion/cierra_sesion.php')"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a></li>
+						<li><a href="#" data-href="../php/sesion/cierra_sesion.php" data-toggle="modal" data-target="#confirm-action" data-msj="¿Realmente desea salir del sistema?"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a></li>
 					</ul>
 				</li>
 			</ul>
 		</div>
 	</div>
 </nav>
+<!-- FIN DE LA BARRA DE NAVEGACION -->
+
+
+<!-- INICIO DEL MODAL PARA CONFIRMAR ACCIÓN -->
+<div class="modal fade" id="confirm-action" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Confirmar Acción</h4>
+			</div>
+
+			<div class="modal-body">
+				<p class="debug-url"></p>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+				<a class="btn btn-danger btn-ok">Aceptar</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- FIN DEL MODAL PARA CONFIRMAR ACCIÓN -->

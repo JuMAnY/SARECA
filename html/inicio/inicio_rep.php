@@ -9,74 +9,63 @@
 		$conectar->close();
 		exit();
 	}
+
+	if ($res->num_rows == 0) {
 ?>
-<table class="tabla">
-	<?php
-		if ($res->num_rows == 0) {
-	?>
-			<tr>
-				<td align="center">
-					<table class="tab_con">
-						<tr class="tr_con">
-							<th class="th_con">Serial</th>
-							<th class="th_con">Nucleo</th>
-							<th class="th_con">Departamento</th>
-							<th class="th_con">Falla</th>
-							<th class="th_con">Observacion</th>
-							<th class="th_con">Fecha Entrada</th>
+		<div class="row">
+			<div class="col-lg-12">
+				<h3><span class="glyphicon glyphicon-wrench"></span> Equipos en Reparación</h3>
+				<div class="alert alert-dismissible alert-info">
+					<strong>No hay equipos en reparación.</strong>
+				</div>
+			</div>
+		</div>
+<?php
+	} else {
+?>
+		<div class="row">
+			<div class="col-lg-12">
+				<h3><span class="glyphicon glyphicon-wrench"></span> Equipos en Reparación</h3>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Serial</th>
+							<th>Nucleo</th>
+							<th>Departamento</th>
+							<th>Falla</th>
+							<th>Observacion</th>
+							<th>Fecha Entrada</th>
 						</tr>
-						<tr class="tr_con">
-							<td class="td_con" colspan="6"><h2>No existen equipos en reparación.</h2></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-	<?php
-		}else{
-	?>
-			<tr>
-				<th><h2>Equipos en Reparación</h2></th>
-			</tr>
-			<tr>
-				<td align="center">
-					<table class="tab_con">
-						<tr class="tr_con">
-							<th class="th_con">Serial</th>
-							<th class="th_con">Nucleo</th>
-							<th class="th_con">Departamento</th>
-							<th class="th_con">Falla</th>
-							<th class="th_con">Observacion</th>
-							<th class="th_con">Fecha Entrada</th>
-						</tr>
+					</thead>
+					<tbody>
 						<?php
-							while ($fila = $res->fetch_object()) {
-								list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
-								printf('
-									<tr class="tr_con">
-										<td class="td_con">%s</td>
-										<td class="td_con">%s</td>
-										<td class="td_con">%s</td>
-										<td class="td_con">%s</td>
-										<td class="td_con">%s</td>
-										<td class="td_con">%d-%d-%d</td>
-									</tr>',
-									$fila->Serial_equipo,
-									$fila->Nucleo,
-									$fila->Departamento,
-									$fila->falla,
-									$fila->observacion,
-									$d,
-									$m,
-									$a
-								);
-							}
+						while ($fila = $res->fetch_object()) {
+							list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
+							printf('
+								<tr>
+									<td>%s</td>
+									<td>%s</td>
+									<td>%s</td>
+									<td>%s</td>
+									<td>%s</td>
+									<td>%d-%d-%d</td>
+								</tr>',
+								$fila->Serial_equipo,
+								$fila->Nucleo,
+								$fila->Departamento,
+								$fila->falla,
+								$fila->observacion,
+								$d,
+								$m,
+								$a
+							);
+						}
 						?>
-					</table>
-				</td>
-			</tr>
-	<?php
-		}
-		$conectar->close();
-	?>
-</table>
-<br />
+					</tbody>
+				</table>
+			</div>
+		</div>
+<?php
+	}
+	$conectar->close();
+?>
