@@ -2291,7 +2291,7 @@ th {
 .table > caption + thead > tr:first-child > td,
 .table > colgroup + thead > tr:first-child > td,
 .table > thead:first-child > tr:first-child > td {
-  border-top: 0;
+  border-top: 2px solid #D7DADA;
 }
 .table > tbody + tbody {
   border-top: 2px solid #ecf0f1;
@@ -2326,7 +2326,7 @@ th {
   background-color: #f9f9f9;
 }
 .table-hover > tbody > tr:hover {
-  background-color: #A1C9D5;
+  background-color: #ecf0f1;
 }
 table col[class*="col-"] {
   position: static;

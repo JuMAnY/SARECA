@@ -24,13 +24,13 @@
 					<div class="page-header">
 						<h1><span class="glyphicon glyphicon-alert"></span> Pendientes</h1>
 					</div>
-					<div class="jumbotron">
+					<!-- <div class="jumbotron"> -->
 						<?php
 							if ($_SESSION['nivel'] == 3 || $_SESSION['nivel'] == 1) include('inicio/inicio_rep.php');
 							echo '<br>';
 							if ($_SESSION['nivel'] == 2 || $_SESSION['nivel'] == 1) include('inicio/inicio_pres.php');
 						?>
-					</div>
+					<!-- </div> -->
 				</div>
 			</div>
 			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
