@@ -11,88 +11,111 @@
 		exit();
 	}
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 	<head>
+		<meta charset="UTF-8">
 		<title>SARECA</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link type="image/x-icon" href="../imagen/logo.ico" rel="shortcut icon" />
-		<link type="text/css" href="../css/estilo.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/valida_reparacion.js"></script>
-		<script type="text/javascript" src="../js/funciones.js"></script>
+		<meta name="description" content="SARECA">
+		<meta name="keywords" content="inventario, equipos, sareca">
+		<meta name="author" content="JuMAnY">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/general.css">
 	</head>
 	<body>
-		<div class="contenedor">
-			<div class="membrete">
-				<img title="Gobierno Bolivariano de Venezuela" src="../imagen/gobierno.jpg" width="800px" height="78px"><br>	
-				<img title="Logo de Sistema" src="../imagen/logo.jpg" width="100px" height="100px" align="left">
-				<img title="Instituto Universitario Tecnol&oacute;gico de Ejido" src="../imagen/uptm.jpg" width="90px" height="100px" align="right" > 
-				<h1> Sistema automatizado registro equipos de computacion y audiovisuales "SARECA"</h1>
-				<div class="nombre"><h4>Bienvenido:<?=' '.$_SESSION['nombre']?></h4></div>
-			</div>
-			<?php include("menu/menu.php");?>
-			<FORM  name='form1' method='post' action='consulta_reparacion_f.php'>
-				<table class="tabla">
+		<div id="wrap">
+			<?php
+				include("menu/menu.php");
+			?>
+			<!-- INICIO DEL CONTENEDOR DE LA PAGINA -->
+			<div class="container">
+				<div class="bs-docs-section">
 					<?php
-						if ($res->num_rows == 0) {
+						include('mensaje/mensaje.php');
 					?>
-							<tr>
-								<th><h2>No existen equipos en reparación.</h2></th>
-							</tr>
-					<?php
-							
-						}else{
-					?>
-							<tr>
-								<th><h2>Consulta Equipos en Reparación</h2></th>
-							</tr>
-							<tr>
-								<td align="center">
-									<table class="tab_con">
-										<tr class="tr_con">
-											<th class="th_con">Serial</th>
-											<th class="th_con">Nucleo</th>
-											<th class="th_con">Departamento</th>
-											<th class="th_con">Falla</th>
-											<th class="th_con">Observacion</th>
-											<th class="th_con">Fecha Entrada</th>
-											<th class="th_con">Elegir</th>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="page-header">
+								<h1><span class="glyphicon glyphicon-wrench"></span> Equipos Dañados</h1>
+							</div>
+							<?php
+							if ($res->num_rows == 0) {
+							?>
+								<h3><span class="glyphicon glyphicon-search"></span> Equipos en Reparación</h3>
+								<div class="alert alert-dismissible alert-info">
+									<strong>No hay equipos en reparación.</strong>
+								</div>
+							<?php	
+							} else {
+							?>
+								<h3><span class="glyphicon glyphicon-search"></span> Equipos en Reparación</h3>
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th>Serial</th>
+											<th>Nucleo</th>
+											<th>Departamento</th>
+											<th>Falla</th>
+											<th>Observacion</th>
+											<th>Fecha Entrada</th>
+											<th>Elegir</th>
 										</tr>
+									</thead>
+									<tbody>
 										<?php
-											while ($fila = $res->fetch_object()) {
-												list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
-												printf('
-													<tr class="tr_con">
-														<td class="td_con">%s</td>
-														<td class="td_con">%s</td>
-														<td class="td_con">%s</td>
-														<td class="td_con">%s</td>
-														<td class="td_con">%s</td>
-														<td class="td_con">%d-%d-%d</td>
-														<td class="td_con"><input type="radio" name="serial" value="%s" title="Elegir equipo para reparar"></td>
-													</tr>',
-													$fila->Serial_equipo,
-													$fila->Nucleo,
-													$fila->Departamento,
-													$fila->falla,
-													$fila->observacion,
-													$d,
-													$m,
-													$a,
-													$fila->Serial_equipo
-												);
-											}
+										while ($fila = $res->fetch_object()) {
+											list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
+											printf('
+												<tr>
+													<td>%s</td>
+													<td>%s</td>
+													<td>%s</td>
+													<td>%s</td>
+													<td>%s</td>
+													<td>%d-%d-%d</td>
+													<td><a href="consulta_reparacion_f.php?s=%s" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="" data-original-title="Reparar"><span class="glyphicon glyphicon-wrench"></span> </a></td>
+												</tr>',
+												$fila->Serial_equipo,
+												$fila->Nucleo,
+												$fila->Departamento,
+												$fila->falla,
+												$fila->observacion,
+												$d,
+												$m,
+												$a,
+												$fila->Serial_equipo
+											);
+										}
 										?>
-									</table>
-								</td>
-							</tr>
-							<tr>
-								<td align="center"><input type="submit" value='Reparar' id="reparar" title="Click para reparar el equipo elegido" /></td>
-							</tr>
-					<?php
-						}
-					?>
-				</table>
-			</form>
+									</tbody>
+								</table>
+							<?php
+							}
+							?>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
+			<!-- DIV para manejar el footer de manera dinamica -->
+			<div id="push"></div>
 		</div>
+		<!-- INICIO DEL PIE DE PAGINA -->
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">
+					Todos los derechos reservados &copy 2015 <br>
+					SARECA | <b>JuMAnY</b>
+				</p>
+			</div>
+		</div>
+		<!-- FIN DEL PIE DE PAGINA -->
+
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/validadores/funciones.js"></script>
+		<script src="../js/validadores/valida_equip_d.js"></script>
 	</body>
 </html>
