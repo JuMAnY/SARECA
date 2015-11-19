@@ -2,7 +2,7 @@
 	require('../php/sesion/valida_sesion.php');
 	require('../php/conexion/conexion.php');
 
-	$serial = $_POST['serial'];
+	$serial = $_GET['s'];
 	
 	$sql = "SELECT *
 			FROM reparacion
@@ -19,76 +19,135 @@
 	$fila = $res->fetch_object();
 	list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 	<head>
+		<meta charset="UTF-8">
 		<title>SARECA</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link type="image/x-icon" href="../imagen/logo.ico" rel="shortcut icon" />
-		<link type="text/css" href="../css/estilo.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/valida_fin_repr.js"></script>
-		<script type="text/javascript" src="../js/funciones.js"></script>
+		<meta name="description" content="SARECA">
+		<meta name="keywords" content="inventario, equipos, sareca">
+		<meta name="author" content="JuMAnY">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/general.css">
 	</head>
 	<body>
-		<div class="contenedor">
-			<div class="membrete">
-				<img title="Gobierno Bolivariano de Venezuela" src="../imagen/gobierno.jpg" width="800px" height="78px"><br>	
-				<img title="Logo de Sistema" src="../imagen/logo.jpg" width="100px" height="100px" align="left">
-				<img title="Instituto Universitario Tecnol&oacute;gico de Ejido" src="../imagen/uptm.jpg" width="90px" height="100px" align="right" > 
-				<h1> Sistema automatizado registro equipos de computacion y audiovisuales "SARECA"</h1>
-				<div class="nombre"><h4>Bienvenido:<?=' '.$_SESSION['nombre']?></h4></div>
+		<div id="wrap">
+			<?php
+				include("menu/menu.php");
+			?>
+			<!-- INICIO DEL CONTENEDOR DE LA PAGINA -->
+			<div class="container">
+				<div class="bs-docs-section">
+					<br>
+					<div class="row">
+
+						<div class="page-header col-lg-12">
+							<h1><span class="glyphicon glyphicon-wrench"></span> Equipo Dañado</h1>
+						</div>
+						<div class="col-lg-6">
+							<div class="well bs-component">
+								<form class="form-horizontal">
+									<fieldset>
+										<legend><span class="glyphicon glyphicon-sunglasses"></span> Datos del Equipo</legend>
+										<div class="form-group">
+											<label for="nucleo" class="col-lg-2 control-label">Núcleo</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="nucleo" type="text" value="<?=$fila->Nucleo?>" disabled="">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="serial" class="col-lg-2 control-label">Serial</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="serial" type="text" value="<?=$fila->Serial_equipo?>" disabled="">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="departamento" class="col-lg-2 control-label">Área</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="departamento" type="text" value="<?=$fila->Departamento?>" disabled="">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="falla" class="col-lg-2 control-label">Falla</label>
+											<div class="col-lg-10">
+												<textarea class="form-control" rows="3" id="falla" disabled=""><?=$fila->falla?></textarea>
+												<span class="help-block">Describe la falla que presenta el equipo.</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="observacion" class="col-lg-2 control-label">Observación</label>
+											<div class="col-lg-10">
+												<textarea class="form-control" rows="3" id="observacion" disabled=""><?=$fila->observacion?></textarea>
+												<span class="help-block">Observaciones sobre el equipo como: tipo, componentes, etc.</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">Entrada</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="inputEmail" type="text" value="<?=$d.'-'.$m.'-'.$a?>" disabled="">
+											</div>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="well bs-component">
+								<form class="form-horizontal" method="post" action="../php/finaliza_reparacion.php">
+									<fieldset>
+										<legend><span class="glyphicon glyphicon-pencil"></span> Datos de la Reparación</legend>
+										<div class="form-group">
+											<label for="resultado" class="col-lg-2 control-label">Resultado</label>
+											<div class="col-lg-10">
+												<select name="resultado" class="form-control" id="resultado" title="Debe indicare si el equipo fue ó no reparado" required>
+													<option></option>
+													<option value="1">No Reparado</option>
+													<option value="2">Reparado</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="observación_r" class="col-lg-2 control-label">Observación</label>
+											<div class="col-lg-10">
+												<textarea name="observacion_r" class="form-control" rows="3" id="observación_r" title="Debe ingresar los detalles del proceso de reparación" required></textarea>
+												<span class="help-block">Debe ingresar los detalles del proceso de reparación.</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-lg-10 col-lg-offset-2">
+												<input name="serial" value="<?=$fila->Serial_equipo?>" type="hidden">
+												<button type="reset" class="btn btn-default">Cancelar</button>
+												<button type="submit" class="btn btn-primary">Enviar</button>
+											</div>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<?php include("menu/menu.php");?>
-			<FORM  name='form1' method='post' action='../php/finaliza_reparacion.php'>
-				<table class="tabla">
-					<tr>
-						<th colspan="3"><h2>Datos del Equipo</h2></th>
-					</tr>
-					<tr>
-						<td><label><div align="right">Nucleo<span class="red">*</span></label></td>
-						<td><input name="nucleo" type="text" value="<?=$fila->Nucleo?>" size="21" readonly><td>
-					</tr>
-					<tr>
-						<td><label for="Serial"> <div align="right"> Serial <span class="red">*</span></label></td>
-						<td><input name="serial" id="Serial" type="text" value="<?=$fila->Serial_equipo?>" size="21" readonly><td>
-					</tr>
-					<tr>
-						<td><label for="departamento"> <div align="right"> Departamento <span class="red">*</span></label></td>
-						<td><input name="departamento" id="departamento" type="text" value="<?=$fila->Departamento?>" size="21" readonly><td>
-					</tr>
-					<tr>	
-						<td><label for="descripcion"> <div align="right"> Falla <span class="red">*</span></label></td>
-						<td><textarea name="descripcion" id="descripcion" rows="5" cols="30" placeholder="Descripci&oacute;n de falla " readonly><?=$fila->falla?></textarea><td>
-					</tr>
-					<tr>	
-						<td><label for="Observacion"> <div align="right"> Observación Equipo<span class="red">*</span></label></td>
-						<td><textarea name="Observacion" id="Observacion" rows="5" cols="30" placeholder="Observaci&oacute;n de Equipo" readonly><?=$fila->observacion?></textarea><td>
-					</tr>
-					<tr>	
-						<td><label for="Fecha_entrada"> <div align="right"> Fecha Entrada <span class="red">*</span></label></td>
-						<td><input type="text" name="Fecha_entrada" id="Fecha_entrada" value="<?=$d.'-'.$m.'-'.$a?>" readonly><td>
-					</tr>
-					<tr>
-						<th colspan="3"><h2>Datos de la Reparacion</h2></th>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<label>Resultado<span class="red">*</span></label>
-							<input type="radio" name="resultado" value="1" id="norepd"><label for="norepd">No Reparado</label>
-							<input type="radio" name="resultado" value="2" id="repd"><label for="repd">Reparado</label>
-						</td>
-					</tr>
-					<tr>	
-						<td><label for="Observacion_r"> <div align="right"> Observación Reparación<span class="red">*</span></label></td>
-						<td><textarea name="observacion_r" id="Observacion_r" rows="5" cols="30" placeholder="Observaci&oacute;n de la Reparacion" title="Debe ingresar los detalles del proceso de reparación" required></textarea><td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<input type="submit" value='Finalizar' id="boton" title="Click para finalizar el proceso de reparacion de este equipo" />
-							<input type="reset" value='Restablecer' id="boton" title="Limpia los Datos Introducidos" />
-						</td>
-					</tr>
-				</table>
-			</form>
+			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
+			<!-- DIV para manejar el footer de manera dinamica -->
+			<div id="push"></div>
 		</div>
+
+		<!-- INICIO DEL PIE DE PAGINA -->
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">
+					Todos los derechos reservados &copy 2015 <br>
+					SARECA | <b>JuMAnY</b>
+				</p>
+			</div>
+		</div>
+		<!-- FIN DEL PIE DE PAGINA -->
+
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/validadores/funciones.js"></script>
+		<script src="../js/validadores/valida_fin_repr.js"></script>
 	</body>
 </html>
