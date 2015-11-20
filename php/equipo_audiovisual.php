@@ -10,16 +10,16 @@
 	
 	if(!$res){
 		if ($conectar->errno == 1062) {
-			header('Location: ../html/inicio.php?m=2&e=El equipo de serial "'.$serial.'" esta registrado.');
+			header('Location: ../html/equipo_audiovisual_f.php?m=2&e=El equipo de serial "'.$serial.'" ya está registrado.');
 			$conectar->close();
 			exit();
 		}else{
-			header('Location: ../html/inicio.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);
+			header('Location: ../html/equipo_audiovisual_f.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);
 			$conectar->close();
 			exit();
 		}
 	}else{
-		header('Location: ../html/inicio.php?m=1&a=registraron');
+		header('Location: ../html/equipo_audiovisual_f.php?m=1&a=registraron');
 		$conectar->close();
 	}
 ?>

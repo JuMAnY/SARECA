@@ -1,45 +1,139 @@
 <?php require('../php/sesion/valida_sesion.php');?>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 	<head>
+		<meta charset="UTF-8">
 		<title>SARECA</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link type="image/x-icon" href="../imagen/logo.ico" rel="shortcut icon" />
-		<link type="text/css" href="../css/estilo.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/valida_equ_audio.js"></script>
-		<script type="text/javascript" src="../js/funciones.js"></script>
+		<meta name="description" content="SARECA">
+		<meta name="keywords" content="inventario, equipos, sareca">
+		<meta name="author" content="JuMAnY">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/general.css">
 	</head>
 	<body>
-		<div class="contenedor">
-			<div class="membrete">
-				<img title="Gobierno Bolivariano de Venezuela" src="../imagen/gobierno.jpg" width="800px" height="78px"><br>	
-				<img title="Logo de Sistema" src="../imagen/logo.jpg" width="100px" height="100px" align="left">
-				<img title="Instituto Universitario Tecnol&oacute;gico de Ejido" src="../imagen/uptm.jpg" width="90px" height="100px" align="right" > 
-				<h1> Sistema automatizado registro equipos de computacion y audiovisuales "SARECA"</h1>
-				<div class="nombre"><h4>Bienvenido:<?=' '.$_SESSION['nombre']?></h4></div>
+		<div id="wrap">
+			<?php
+				include("menu/menu.php");
+			?>
+			<!-- INICIO DEL CONTENEDOR DE LA PAGINA -->
+			<div class="container">
+				<div class="bs-docs-section">
+					<?php
+						include('mensaje/mensaje.php');
+					?>
+					<div class="row">
+						<div class="col-lg-6 col-lg-offset-3">
+							<div class="page-header">
+								<h1><span class="glyphicon glyphicon-facetime-video"></span> Equipo Audiovisual</h1>
+							</div>
+							<div class="well bs-component">
+
+
+
+
+
+							<form class="form-horizontal" method="post" action="../php/equipo_audiovisual.php">
+								<fieldset>
+									<legend><span class="glyphicon glyphicon-pencil"> Registro</legend>
+									<div class="form-group">
+										<label for="tipo" class="col-lg-2 control-label">Tipo Equipo</label>
+										<div class="col-lg-10">
+											<select name="tipo" class="form-control" id="tipo" title="Debe elegir el tipo de equipo" required>
+												<option></option>
+												<option value="1">Video Beam</option>
+												<option value="2">Retroproyector</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="Serial" class="col-lg-2 control-label">Serial</label>
+										<div class="col-lg-10">
+											<input name="Serial" class="form-control" id="Serial" placeholder="Codigo del equipo" type="text" title="Debe ingresar el serial del equipo" pattern="[a-zA-Z0-9]*" required>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-lg-10 col-lg-offset-2">
+											<button type="reset" class="btn btn-default">Cancelar</button>
+											<button type="submit" class="btn btn-primary">Enviar</button>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<?php include("menu/menu.php");?>
-			<FORM  name='form1' method='post' action='../php/equipo_audiovisual.php'>
-				<table class="tabla">
-					<tr>
-						<th colspan="3"><h2>Equipo Audiovisual</h2></th>
-					</tr>
-					<tr>
-						<td colspan="3" align="center">
-							<label> Tipo de Equipo <span class="red">*</span></label>
-							<input type="radio" name="tipo" value="1" id="vb"><label for="vb">Video Beam</label>
-							<input type="radio" name="tipo" value="2" id="rpy"><label for="rpy">Retroproyector</label>
-						</td>
-					</tr>
-					<tr>
-						<td><label for="Serial"> <div align="right"> Serial <span class="red">*</span> </label></td>
-						<td><input name="Serial" id="Serial" type="text" placeholder="Codigo de equipo" size="21" title="Debe ingresar el serial del equipo" pattern="[a-zA-Z0-9]*" required/><td>
-					</tr>
-					<td colspan="3" align="center">
-						<input type="submit" value='Guardar' id="boton" title="Click para guardar los datos" />
-						<input type="reset" value='Restablecer' id="boton" title="Limpia los Datos Introducidos" />
-					</td>
-				</table>
-			</form>
+			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
+			<!-- DIV para manejar el footer de manera dinamica -->
+			<div id="push"></div>
 		</div>
+		<!-- INICIO DEL PIE DE PAGINA -->
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">
+					Todos los derechos reservados &copy 2015 <br>
+					SARECA | <b>JuMAnY</b>
+				</p>
+			</div>
+		</div>
+		<!-- FIN DEL PIE DE PAGINA -->
+
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/validadores/funciones.js"></script>
+		<script src="../js/validadores/valida_equ_audio.js"></script>
 	</body>
 </html>
