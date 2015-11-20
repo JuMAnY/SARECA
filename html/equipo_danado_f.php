@@ -25,12 +25,12 @@
 					<div class="row">
 						<div class="col-lg-6 col-lg-offset-3">
 							<div class="page-header">
-								<h1><span class="glyphicon glyphicon-pencil"></span> Equipos Dañados</h1>
+								<h1><span class="glyphicon glyphicon-wrench"></span> Equipos Dañados</h1>
 							</div>
 							<div class="well bs-component">
 								<form class="form-horizontal" method="post" action="../php/equipo_danado.php">
 									<fieldset>
-										<legend>Registro</legend>
+										<legend><span class="glyphicon glyphicon-pencil"> Registro</legend>
 										<div class="form-group">
 											<label for="select" class="col-lg-2 control-label">Núcleo</label>
 											<div class="col-lg-10">

@@ -1,39 +1,126 @@
 <?php require('../php/sesion/valida_sesion.php'); ?>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 	<head>
+		<meta charset="UTF-8">
 		<title>SARECA</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link type="text/css" href="../css/estilo.css" rel="stylesheet">
-		<link type="image/x-icon" href="../imagen/logo.ico" rel="shortcut icon" />
-		<script type="text/javascript" src="../js/funciones.js"></script>
-		<script type="text/javascript" src="../js/valida_conslt_eq_da.js"></script>
+		<meta name="description" content="SARECA">
+		<meta name="keywords" content="inventario, equipos, sareca">
+		<meta name="author" content="JuMAnY">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/general.css">
 	</head>
 	<body>
-		<div class="contenedor">
-			<div class="membrete">
-				<img title="Gobierno Bolivariano de Venezuela" src="../imagen/gobierno.jpg" width="800px" height="78px"><br>	
-				<img title="Logo de Sistema" src="../imagen/logo.jpg" width="100px" height="100px" align="left">
-				<img title="Instituto Universitario Tecnol&oacute;gico de Ejido" src="../imagen/uptm.jpg" width="90px" height="100px" align="right" > 
-				<h1> Sistema automatizado registro equipos de computacion y audiovisuales "SARECA"</h1>
-				<div class="nombre"><h4>Bienvenido:<?=' '.$_SESSION['nombre']?></h4></div>
-			</div>
-			<?php include("menu/menu.php");?>
-			<table class="tabla">
-				<tr>
-					<th colspan="2"><h2>Reparación de Equipos</h2></th>
-				</tr>
-				<tr>
-					<td><label for="mes"><div align="right">Mes<span class="red">*</span></label></td>
-					<td><input type="month" name="mes" id="mes" title="Debe eligir el mes y año del periodo de reparación" required/></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<!-- DIV DONDE SE CARGARA LA CONSULTA DE EQUIPOS REPARADOS Y NO REPARADOS -->
-						<div id="carga_tabla">
+		<div id="wrap">
+			<?php
+				include("menu/menu.php");
+			?>
+			<!-- INICIO DEL CONTENEDOR DE LA PAGINA -->
+			<div class="container">
+				<div class="bs-docs-section">
+					<?php
+						include('mensaje/mensaje.php');
+					?>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="page-header">
+								<h1><span class="glyphicon glyphicon-wrench"></span> Consulta de Reparación</h1>
+							</div>
+
+
+
+
+
+
+					
+						<div class="well bs-component">
+							<form class="form-horizontal">
+								<fieldset>
+									<legend><span class="glyphicon glyphicon-search"></span> Periodo</legend>
+									<div class="form-group">
+										<label for="mes" class="col-lg-2 control-label">Mes y Año</label>
+										<div class="col-lg-4">
+											<input name="mes" class="form-control" id="mes" type="month" title="Debe eligir el mes y año del periodo de reparación">
+										</div>
+									</div>
+								</fieldset>
+							</form>
 						</div>
-					</td>
-				</tr>
-			</table>
+
+
+
+
+
+
+
+
+							
+								
+								
+									
+									<!-- DIV DONDE SE CARGARA LA CONSULTA DE EQUIPOS REPARADOS Y NO REPARADOS -->
+									<div id="carga_tabla"></div>
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
+			<!-- DIV para manejar el footer de manera dinamica -->
+			<div id="push"></div>
 		</div>
+
+		<!-- INICIO DEL PIE DE PAGINA -->
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">
+					Todos los derechos reservados &copy 2015 <br>
+					SARECA | <b>JuMAnY</b>
+				</p>
+			</div>
+		</div>
+		<!-- FIN DEL PIE DE PAGINA -->
+
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/validadores/funciones.js"></script>
+		<script src="../js/validadores/valida_conslt_eq_da.js"></script>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

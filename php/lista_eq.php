@@ -19,71 +19,64 @@
 	
 	if ($res->num_rows == 0) {
 ?>
-		<tr>
-			<td align="center">
-				<table class="tab_con">
-					<caption>Equipos reparados</caption>
-					<tr class="tr_con">
-						<th class="th_con">Serial</th>
-						<th class="th_con">Nucleo</th>
-						<th class="th_con">Departamento</th>
-						<th class="th_con">Falla</th>
-						<th class="th_con">Observacion</th>
-						<th class="th_con">Fecha Entrada</th>
-					</tr>
-					<tr class="tr_con">
-						<td class="td_con" colspan="6"><h3>No resultaron equipos REPARADOS par el periodo consultado.</h3></td>
-					</tr>
-					<tr>
-						<th class="resul" colspan="6">Cantidad de resultados: <?=$res->num_rows?></th>
-					</tr>
-				</table>
-			</td>
-		</tr>
+		<div class="row">
+			<div class="col-lg-12">
+				<h3><span class="glyphicon glyphicon-ok-circle"></span> Equipos reparados</h3>
+				<div class="alert alert-dismissible alert-info">
+					<strong>No resultaron equipos REPARADOS par el periodo consultado.</strong>
+				</div>
+			</div>
+		</div>
 <?php
-	}else{
+	} else {
 ?>
-		<tr>
-			<td align="center">
-				<table class="tab_con">
-					<caption>Equipos reparados</caption>
-					<tr class="tr_con">
-						<th class="th_con">Serial</th>
-						<th class="th_con">Nucleo</th>
-						<th class="th_con">Departamento</th>
-						<th class="th_con">Falla</th>
-						<th class="th_con">Observacion</th>
-						<th class="th_con">Fecha Entrada</th>
-					</tr>
+		<div class="row">
+			<div class="col-lg-12">
+				<h3><span class="glyphicon glyphicon-ok-circle"></span> Equipos reparados</h3>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Serial</th>
+							<th>Nucleo</th>
+							<th>Departamento</th>
+							<th>Falla</th>
+							<th>Observacion</th>
+							<th>Fecha Entrada</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th colspan="6">Cantidad de resultados: <?=$res->num_rows?></th>
+						</tr>
+					</tfoot>
+					<tbody>
 					<?php
-						while ($fila = $res->fetch_object()) {
-							list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
-							printf('
-								<tr class="tr_con">
-									<td class="td_con">%s</td>
-									<td class="td_con">%s</td>
-									<td class="td_con">%s</td>
-									<td class="td_con">%s</td>
-									<td class="td_con">%s</td>
-									<td class="td_con">%d-%d-%d</td>
-								</tr>',
-								$fila->Serial_equipo,
-								$fila->Nucleo,
-								$fila->Departamento,
-								$fila->falla,
-								$fila->observacion,
-								$d,
-								$m,
-								$a
-							);
-						}
+					while ($fila = $res->fetch_object()) {
+						list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
+						printf('
+							<tr>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%d-%d-%d</td>
+							</tr>',
+							$fila->Serial_equipo,
+							$fila->Nucleo,
+							$fila->Departamento,
+							$fila->falla,
+							$fila->observacion,
+							$d,
+							$m,
+							$a
+						);
+					}
 					?>
-					<tr>
-						<th class="resul" colspan="6">Cantidad de resultados: <?=$res->num_rows?></th>
-					</tr>
+					</tbody>
 				</table>
-			</td>
-		</tr>
+			</div>
+		</div>
 <?php
 	}
 
@@ -104,75 +97,64 @@
 	
 	if ($res->num_rows == 0) {
 ?>
-		<br />
-		<br />
-		<tr>
-			<td align="center">
-				<table class="tab_con">
-					<caption>Equipos no reparados</caption>
-					<tr class="tr_con">
-						<th class="th_con">Serial</th>
-						<th class="th_con">Nucleo</th>
-						<th class="th_con">Departamento</th>
-						<th class="th_con">Falla</th>
-						<th class="th_con">Observacion</th>
-						<th class="th_con">Fecha Entrada</th>
-					</tr>
-					<tr class="tr_con">
-						<td class="td_con" colspan="6"><h3>No resultaron equipos NO REPARADOS par el periodo consultado.</h3></td>
-					</tr>
-					<tr>
-						<th class="resul" colspan="6">Cantidad de resultados: <?=$res->num_rows?></th>
-					</tr>
-				</table>
-			</td>
-		</tr>
+		<div class="row">
+			<div class="col-lg-12">
+				<h3><span class="glyphicon glyphicon-remove-circle"></span> Equipos no reparados</h3>
+				<div class="alert alert-dismissible alert-info">
+					<strong>No resultaron equipos NO REPARADOS par el periodo consultado.</strong>
+				</div>
+			</div>
+		</div>
 <?php
-	}else{
+	} else {
 ?>
-		<br />
-		<br />
-		<tr>
-			<td align="center">
-				<table class="tab_con">
-					<caption>Equipos no reparados</caption>
-					<tr class="tr_con">
-						<th class="th_con">Serial</th>
-						<th class="th_con">Nucleo</th>
-						<th class="th_con">Departamento</th>
-						<th class="th_con">Falla</th>
-						<th class="th_con">Observacion</th>
-						<th class="th_con">Fecha Entrada</th>
-					</tr>
+		<div class="row">
+			<div class="col-lg-12">
+				<h3><span class="glyphicon glyphicon-remove-circle"></span> Equipos no reparados</h3>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Serial</th>
+							<th>Nucleo</th>
+							<th>Departamento</th>
+							<th>Falla</th>
+							<th>Observacion</th>
+							<th>Fecha Entrada</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th colspan="6">Cantidad de resultados: <?=$res->num_rows?></th>
+						</tr>
+					</tfoot>
+					<tbody>
 					<?php
-						while ($fila = $res->fetch_object()) {
-							list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
-							printf('
-								<tr class="tr_con">
-									<td class="td_con">%s</td>
-									<td class="td_con">%s</td>
-									<td class="td_con">%s</td>
-									<td class="td_con">%s</td>
-									<td class="td_con">%s</td>
-									<td class="td_con">%d-%d-%d</td>
-								</tr>',
-								$fila->Serial_equipo,
-								$fila->Nucleo,
-								$fila->Departamento,
-								$fila->falla,
-								$fila->observacion,
-								$d,
-								$m,
-								$a
-							);
-						}
+					while ($fila = $res->fetch_object()) {
+						list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
+						printf('
+							<tr>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%d-%d-%d</td>
+							</tr>',
+							$fila->Serial_equipo,
+							$fila->Nucleo,
+							$fila->Departamento,
+							$fila->falla,
+							$fila->observacion,
+							$d,
+							$m,
+							$a
+						);
+					}
 					?>
-					<tr>
-						<th class="resul" colspan="6">Cantidad de resultados: <?=$res->num_rows?></th>
-					</tr>
+					</tbody>
 				</table>
-			</td>
-		</tr>
+			</div>
+		</div>
 <?php
 	}
 	$conectar->close();

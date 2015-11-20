@@ -41,7 +41,6 @@
 				<div class="bs-docs-section">
 					<br>
 					<div class="row">
-
 						<div class="page-header col-lg-12">
 							<h1><span class="glyphicon glyphicon-wrench"></span> Equipo Dañado</h1>
 						</div>
