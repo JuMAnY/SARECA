@@ -27,55 +27,22 @@
 							<div class="page-header">
 								<h1><span class="glyphicon glyphicon-wrench"></span> Consulta de Reparación</h1>
 							</div>
-
-
-
-
-
-
-					
-						<div class="well bs-component">
-							<form class="form-horizontal">
-								<fieldset>
-									<legend><span class="glyphicon glyphicon-search"></span> Periodo</legend>
-									<div class="form-group">
-										<label for="mes" class="col-lg-2 control-label">Mes y Año</label>
-										<div class="col-lg-4">
-											<input name="mes" class="form-control" id="mes" type="month" title="Debe eligir el mes y año del periodo de reparación">
+							<div class="well bs-component">
+								<form class="form-horizontal">
+									<fieldset>
+										<legend><span class="glyphicon glyphicon-search"></span> Periodo</legend>
+										<div class="form-group">
+											<label for="mes" class="col-lg-2 control-label">Mes y Año</label>
+											<div class="col-lg-4">
+												<input name="mes" class="form-control" id="mes" type="month" title="Debe eligir el mes y año del periodo de reparación">
+											</div>
 										</div>
-									</div>
-								</fieldset>
-							</form>
-						</div>
-
-
-
-
-
-
-
-
-							
-								
-								
-									
-									<!-- DIV DONDE SE CARGARA LA CONSULTA DE EQUIPOS REPARADOS Y NO REPARADOS -->
-									<div id="carga_tabla"></div>
-							
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+									</fieldset>
+								</form>
+							</div>	
+							<!-- DIV DONDE SE CARGARA LA CONSULTA DE EQUIPOS REPARADOS Y NO REPARADOS -->
+							<div id="carga_tabla"></div>
+							<!-- ******************************************************************** -->
 						</div>
 					</div>
 				</div>
