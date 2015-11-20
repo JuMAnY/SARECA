@@ -1,55 +1,97 @@
 <?php require('../php/sesion/valida_sesion.php');?>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 	<head>
+		<meta charset="UTF-8">
 		<title>SARECA</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link type="image/x-icon" href="../imagen/logo.ico" rel="shortcut icon" />
-		<link type="text/css" href="../css/estilo.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/funciones.js"></script>
+		<meta name="description" content="SARECA">
+		<meta name="keywords" content="inventario, equipos, sareca">
+		<meta name="author" content="JuMAnY">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/general.css">
 	</head>
 	<body>
-		<div class="contenedor">
-			<div class="membrete">
-				<img title="Gobierno Bolivariano de Venezuela" src="../imagen/gobierno.jpg" width="800px" height="78px"><br>	
-				<img title="Logo de Sistema" src="../imagen/logo.jpg" width="100px" height="100px" align="left">
-				<img title="Instituto Universitario Tecnol&oacute;gico de Ejido" src="../imagen/uptm.jpg" width="90px" height="100px" align="right" > 
-				<h1> Sistema automatizado registro equipos de computacion y audiovisuales "SARECA"</h1>
-				<div class="nombre"><h4>Bienvenido:<?=' '.$_SESSION['nombre']?></h4></div>
+		<div id="wrap">
+			<?php
+				include("menu/menu.php");
+			?>
+			<!-- INICIO DEL CONTENEDOR DE LA PAGINA -->
+			<div class="container">
+				<div class="bs-docs-section">
+					<?php
+						include('mensaje/mensaje.php');
+					?>
+					<div class="row">
+						<div class="col-lg-6 col-lg-offset-3">
+							<div class="page-header">
+								<h1><span class="glyphicon glyphicon-facetime-video"></span> Usuarios de Prestamos</h1>
+							</div>
+							<div class="well bs-component">
+								<form class="form-horizontal" method="post" action="../php/usuario_prestamo.php">
+									<fieldset>
+										<legend><span class="glyphicon glyphicon-pencil"> Registro</legend>
+										<div class="form-group">
+											<label for="carnet" class="col-lg-2 control-label">Carnet</label>
+											<div class="col-lg-10">
+												<input name="carnet" class="form-control" id="carnet" placeholder="Carnet del Profesor" type="number" title="Debe ingresar el número de carnet del profesor" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="cedula" class="col-lg-2 control-label">Cédula</label>
+											<div class="col-lg-10">
+												<input name="cedula"class="form-control" id="cedula" placeholder="Cédula del Profesor" type="number" title="Debe ingresar el número de cédula del profesor" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="nombre" class="col-lg-2 control-label">Nombre</label>
+											<div class="col-lg-10">
+												<input name="nombre" class="form-control" id="nombre" placeholder="Nombre y Apellido del profesor" type="text" title="Debe ingresar el nombre completo del profesor" pattern="[a-zA-Z ]*" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="departamento" class="col-lg-2 control-label">Área</label>
+											<div class="col-lg-10">
+												<input name="departamento" class="form-control" id="departamento" placeholder="Departamento" type="text" title="Debe ingresar el departamento al que pertenece el profesor" pattern="[a-zA-Z0-9 ]*" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="cargo" class="col-lg-2 control-label">Cargo</label>
+											<div class="col-lg-10">
+												<input name="cargo" class="form-control" id="cargo" placeholder="Cargo del profesor" type="text" title="Debe ingresar el cargo que ocupa el profesor" pattern="[a-zA-Z ]*" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-lg-10 col-lg-offset-2">
+												<button type="reset" class="btn btn-default">Cancelar</button>
+												<button type="submit" class="btn btn-primary">Enviar</button>
+											</div>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<?php include("menu/menu.php");?>
-			<FORM  name='form1' method='post' action='../php/usuario_prestamo.php'>
-				<table class="tabla">
-					<tr>
-						<th colspan="2"><h2>Registro Usuarios de Prestamos</h2></th>
-					</tr>
-					<tr>
-						<td><label for="carnet"> <div align="right">Carnet<span class="red">*</span></label></td>
-						<td><input name="carnet" id="carnet" type="number" placeholder="Carnet del Profesor" size="21" required title="Debe ingresar el número de carnet del profesor" /><td>
-					</tr>
-					<tr>
-						<td><label for="cedula"> <div align="right">Cédula<span class="red">*</span></label></td>
-						<td><input name="cedula" id="cedula" type="number" placeholder="Cédula del Profesor"size="21" required title="Debe ingresar el número de cédula del profesor" /><td>
-					</tr>
-					<tr>
-						<td><label for="nombre"> <div align="right">Nombre<span class="red">*</span></label></td>
-						<td><input name="nombre" id="nombre" type="text" placeholder="Nombre y Apellido del profesor" size="21" required title="Debe ingresar el nombre completo del profesor" pattern="[a-zA-Z ]*"><td>
-					</tr>
-					<tr>
-						<td><label for="departamento"> <div align="right"> Departamento <span class="red">*</span></label></td>
-						<td><input name="departamento" id="departamento" type="text" placeholder="Area Departamento"size="21" required title="Debe ingresar el departamento al que pertenece el profesor" pattern="[a-zA-Z0-9 ]*"><td>
-					</tr>
-					<tr>
-						<td><label for="cargo"> <div align="right">Cargo<span class="red">*</span></label></td>
-						<td><input name="cargo" id="cargo" type="text" placeholder="Cargo del profesor"size="21" required title="Debe ingresar el cargo que ocupa el profesor" pattern="[a-zA-Z ]*"><td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<input type="submit" value='Guardar' id="guardar" title="Click para guardar los datos del usuario de prestamos" />
-							<input type="reset" value='Restablecer' id="boton" title="Limpia los Datos Introducidos" />
-						</td>
-					</tr>
-				</table>
-			</form>
+			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
+			<!-- DIV para manejar el footer de manera dinamica -->
+			<div id="push"></div>
 		</div>
+		<!-- INICIO DEL PIE DE PAGINA -->
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">
+					Todos los derechos reservados &copy 2015 <br>
+					SARECA | <b>JuMAnY</b>
+				</p>
+			</div>
+		</div>
+		<!-- FIN DEL PIE DE PAGINA -->
+
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/validadores/funciones.js"></script>
 	</body>
 </html>

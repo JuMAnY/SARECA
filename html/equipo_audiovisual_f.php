@@ -28,88 +28,33 @@
 								<h1><span class="glyphicon glyphicon-facetime-video"></span> Equipo Audiovisual</h1>
 							</div>
 							<div class="well bs-component">
-
-
-
-
-
-							<form class="form-horizontal" method="post" action="../php/equipo_audiovisual.php">
-								<fieldset>
-									<legend><span class="glyphicon glyphicon-pencil"> Registro</legend>
-									<div class="form-group">
-										<label for="tipo" class="col-lg-2 control-label">Tipo Equipo</label>
-										<div class="col-lg-10">
-											<select name="tipo" class="form-control" id="tipo" title="Debe elegir el tipo de equipo" required>
-												<option></option>
-												<option value="1">Video Beam</option>
-												<option value="2">Retroproyector</option>
-											</select>
+								<form class="form-horizontal" method="post" action="../php/equipo_audiovisual.php">
+									<fieldset>
+										<legend><span class="glyphicon glyphicon-pencil"> Registro</legend>
+										<div class="form-group">
+											<label for="tipo" class="col-lg-2 control-label">Tipo Equipo</label>
+											<div class="col-lg-10">
+												<select name="tipo" class="form-control" id="tipo" title="Debe elegir el tipo de equipo" required>
+													<option></option>
+													<option value="1">Video Beam</option>
+													<option value="2">Retroproyector</option>
+												</select>
+											</div>
 										</div>
-									</div>
-									<div class="form-group">
-										<label for="Serial" class="col-lg-2 control-label">Serial</label>
-										<div class="col-lg-10">
-											<input name="Serial" class="form-control" id="Serial" placeholder="Codigo del equipo" type="text" title="Debe ingresar el serial del equipo" pattern="[a-zA-Z0-9]*" required>
+										<div class="form-group">
+											<label for="Serial" class="col-lg-2 control-label">Serial</label>
+											<div class="col-lg-10">
+												<input name="Serial" class="form-control" id="Serial" placeholder="Codigo del equipo" type="text" title="Debe ingresar el serial del equipo" pattern="[a-zA-Z0-9]*" required>
+											</div>
 										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-lg-10 col-lg-offset-2">
-											<button type="reset" class="btn btn-default">Cancelar</button>
-											<button type="submit" class="btn btn-primary">Enviar</button>
+										<div class="form-group">
+											<div class="col-lg-10 col-lg-offset-2">
+												<button type="reset" class="btn btn-default">Cancelar</button>
+												<button type="submit" class="btn btn-primary">Enviar</button>
+											</div>
 										</div>
-									</div>
-								</fieldset>
-							</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-								
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
+									</fieldset>
+								</form>
 							</div>
 						</div>
 					</div>
