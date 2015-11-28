@@ -6,7 +6,7 @@
 	$res = $conectar->query($sql);
 	
 	if(!$res){
-		echo "<h1>ERROR</H1>";
+		echo "<h1>ERROR</h1>";
 		$conectar->close();
 		exit();
 	}
