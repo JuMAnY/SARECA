@@ -93,7 +93,10 @@
 			</div>
 
 			<div class="modal-body">
-				<p class="debug-url"></p>
+				<div class="alert alert-dismissible alert-warning">
+					<h4>¡Advertencia!</h4>
+					<p class="debug-url"></p>
+				</div>
 			</div>
 
 			<div class="modal-footer">
