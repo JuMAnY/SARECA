@@ -16,87 +16,110 @@
 		exit();
 	}
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 	<head>
+		<meta charset="UTF-8">
 		<title>SARECA</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link type="image/x-icon" href="../imagen/logo.ico" rel="shortcut icon" />
-		<link type="text/css" href="../css/estilo.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/valida_devolucion.js"></script>
-		<script type="text/javascript" src="../js/funciones.js"></script>
+		<meta name="description" content="SARECA">
+		<meta name="keywords" content="inventario, equipos, sareca">
+		<meta name="author" content="JuMAnY">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/general.css">
 	</head>
 	<body>
-		<div class="contenedor">
-			<div class="membrete">
-				<img title="Gobierno Bolivariano de Venezuela" src="../imagen/gobierno.jpg" width="800px" height="78px"><br>	
-				<img title="Logo de Sistema" src="../imagen/logo.jpg" width="100px" height="100px" align="left">
-				<img title="Instituto Universitario Tecnol&oacute;gico de Ejido" src="../imagen/uptm.jpg" width="90px" height="100px" align="right" > 
-				<h1> Sistema automatizado registro equipos de computacion y audiovisuales "SARECA"</h1>
-				<div class="nombre"><h4>Bienvenido:<?=' '.$_SESSION['nombre']?></h4></div>
-			</div>
-			<?php include("menu/menu.php");?>
-			<FORM  name='form1' method='post' action='../php/devolucion.php'>
-				<table class="tabla">
+		<div id="wrap">
+			<?php
+				include("menu/menu.php");
+			?>
+			<!-- INICIO DEL CONTENEDOR DE LA PAGINA -->
+			<div class="container">
+				<div class="bs-docs-section">
 					<?php
-						if ($res->num_rows == 0) {
+						include('mensaje/mensaje.php');
 					?>
-							<tr>
-								<th><h2>No existen equipos en prestamo.</h2></th>
-							</tr>
-					<?php
-							
-						}else{
-					?>
-							<tr>
-								<th><h2>Equipos Prestados</h2></th>
-							</tr>
-							<tr>
-								<td align="center">
-									<table class="tab_con">
-										<tr class="tr_con">
-											<th class="th_con">Carnet</th>
-											<th class="th_con">Nombre</th>
-											<th class="th_con">Serial</th>
-											<th class="th_con">Tipo</th>
-											<th class="th_con">Fecha Prestamo</th>
-											<th class="th_con">Elegir</th>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="page-header">
+								<h1><span class="glyphicon glyphicon-facetime-video"></span> Equipos Prestados</h1>
+							</div>
+							<?php
+							if ($res->num_rows == 0) {
+							?>
+								<div class="alert alert-dismissible alert-info">
+									<strong>No hay equipos AudioVisuales en préstamo.</strong>
+								</div>
+							<?php
+							} else {
+							?>
+								<h3><span class="glyphicon glyphicon-search"></span> Equipos Prestados</h3>
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th>Carnet</th>
+											<th>Nombre</th>
+											<th>Serial</th>
+											<th>Tipo</th>
+											<th>Fecha Prestamo</th>
+											<th>Elegir</th>
 										</tr>
+									</thead>
+									<tbody>
 										<?php
-											while ($fila = $res->fetch_object()) {
-												if ($fila->tipo == 1) $tipo = 'VideoBeam';
-												else $tipo = 'Retroproyector';
-												list($a,$m,$d) = explode('-',$fila->Fecha_prestamo);
-												printf('
-													<tr class="tr_con">
-														<td class="td_con">%d</td>
-														<td class="td_con">%s</td>
-														<td class="td_con">%s</td>
-														<td class="td_con">%s</td>
-														<td class="td_con">%d-%d-%d</td>
-														<td class="td_con"><input type="radio" name="serial" value="%s" title="Elegir equipo para devolver"></td>
-													</tr>',
-													$fila->Carnet,
-													$fila->Nombre,
-													$fila->Serial_equipo,
-													$tipo,
-													$d,
-													$m,
-													$a,
-													$fila->Serial_equipo
-												);
-											}
+										while ($fila = $res->fetch_object()) {
+											if ($fila->tipo == 1) $tipo = 'VideoBeam';
+											else $tipo = 'Retroproyector';
+											list($a,$m,$d) = explode('-',$fila->Fecha_prestamo);
+											printf('
+												<tr>
+													<td>%d</td>
+													<td>%s</td>
+													<td>%s</td>
+													<td>%s</td>
+													<td>%d-%d-%d</td>
+													<td data-toggle="tooltip" data-placement="right" title="" data-original-title="Devolver"><a href="#" data-href="../php/devolucion.php?s=%s" data-toggle="modal" data-target="#confirm-action" data-msj="¿Desea devolver el prestamo de: %s?" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span></a></td>
+												</tr>',
+												$fila->Carnet,
+												$fila->Nombre,
+												$fila->Serial_equipo,
+												$tipo,
+												$d,
+												$m,
+												$a,
+												$fila->Serial_equipo,
+												$fila->Nombre
+											);
+										}
 										?>
-									</table>
-								</td>
-							</tr>
-							<tr>
-								<td align="center"><input type="submit" value='Devolver' id="devolver" title="Click para devolver el equipo prestado" /></td>
-							</tr>
-					<?php
-						}
-					?>
-				</table>
-			</form>
+									</tbody>
+								</table>
+							<?php
+							}
+							?>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
+			<!-- DIV para manejar el footer de manera dinamica -->
+			<div id="push"></div>
 		</div>
+		<!-- INICIO DEL PIE DE PAGINA -->
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">
+					Todos los derechos reservados &copy 2015 <br>
+					SARECA | <b>JuMAnY</b>
+				</p>
+			</div>
+		</div>
+		<!-- FIN DEL PIE DE PAGINA -->
+
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/validadores/funciones.js"></script>
+		<script src="../js/validadores/valida_devolucion.js"></script>
 	</body>
 </html>
