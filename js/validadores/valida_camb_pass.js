@@ -1,5 +1,10 @@
 function camb_pass(){
-	if(!compara_campos("pass","re_pass","La contraseña no coincide, por favor verifique")) return false;
+	if(!compara_campos("pass","re_pass")) {
+		(function(){
+  			$("#myModal").modal('show');
+		})();
+		return false;
+	}
 }
 
 window.onload = function(){

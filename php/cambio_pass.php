@@ -9,11 +9,11 @@
 	$res = $conectar->query($sql);
 	
 	if(!$res){
-		header('Location: ../html/inicio.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);
+		header('Location: ../html/cambio_pass_f.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);
 		$conectar->close();
 		exit();
 	}else{
-		header('Location: ../html/inicio.php?m=1&a=modificaron');
+		header('Location: ../html/cambio_pass_f.php?m=1&a=modificaron');
 		$conectar->close();
 	}
 ?>

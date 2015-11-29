@@ -23,13 +23,13 @@ function confir_accion(mensaje,archivo){
 
 
 /*****************************************************************************************************************************/
-function compara_campos(id1,id2,mensaje){
+function compara_campos(id1,id2){
 	var campo1 = document.getElementById(id1).value;
 	var campo2 = document.getElementById(id2).value;
-	if (campo1 != campo2) {
-		alert(mensaje);
+	if (campo1 != campo2)
 		return false;
-	}else return true;
+	else
+		return true;
 }
 
 
