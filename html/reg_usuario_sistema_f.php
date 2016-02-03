@@ -1,60 +1,124 @@
 <?php require('../php/sesion/valida_sesion.php');?>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 	<head>
+		<meta charset="UTF-8">
 		<title>SARECA</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link type="image/x-icon" href="../imagen/logo.ico" rel="shortcut icon" />
-		<link type="text/css" href="../css/estilo.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/valida_user_sis.js"></script>
-		<script type="text/javascript" src="../js/funciones.js"></script>
+		<meta name="description" content="SARECA">
+		<meta name="keywords" content="inventario, equipos, sareca">
+		<meta name="author" content="JuMAnY">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/general.css">
 	</head>
 	<body>
-		<div class="contenedor">
-			<div class="membrete">
-				<img title="Gobierno Bolivariano de Venezuela" src="../imagen/gobierno.jpg" width="800px" height="78px"><br>	
-				<img title="Logo de Sistema" src="../imagen/logo.jpg" width="100px" height="100px" align="left">
-				<img title="Instituto Universitario Tecnol&oacute;gico de Ejido" src="../imagen/uptm.jpg" width="90px" height="100px" align="right" > 
-				<h1> Sistema automatizado registro equipos de computacion y audiovisuales "SARECA"</h1>
-				<div class="nombre"><h4>Bienvenido:<?=' '.$_SESSION['nombre']?></h4></div>
+		<div id="wrap">
+			<?php
+				include("menu/menu.php");
+			?>
+			<!-- INICIO DEL CONTENEDOR DE LA PAGINA -->
+			<div class="container">
+				<div class="bs-docs-section">
+					<?php
+						include('mensaje/mensaje.php');
+					?>
+					<div class="row">
+						<div class="col-lg-6 col-lg-offset-3">
+							<div class="page-header">
+								<h1><span class="glyphicon glyphicon-user"></span> Usuario</h1>
+							</div>
+							<div class="well bs-component">
+								<form class="form-horizontal" method='post' action='../php/reg_usuario_sistema.php'>
+									<fieldset>
+										<legend><span class="glyphicon glyphicon-pencil"> Registro</legend>
+										<div class="form-group">
+											<label for="tipo" class="col-lg-2 control-label">Nivel</label>
+											<div class="col-lg-10">
+												<select name="nivel" class="form-control" id="nivel" title="Debe elegir el nivel de acceso par el usuario" required>
+													<option></option>
+													<option value="1">Administrador</option>
+													<option value="3">Dep. Reparación</option>
+													<option value="2">Dep. AudioVisuales</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="user" class="col-lg-2 control-label">ID</label>
+											<div class="col-lg-10">
+												<input name="user" class="form-control" id="user" placeholder="ID Usuario" type="text" title="Debe ingresar el identificador de usuario" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="pass" class="col-lg-2 control-label">Contraseña</label>
+											<div class="col-lg-10">
+												<input name="pass" class="form-control" id="pass" placeholder="Contraseña" type="password" title="Debe ingresar la contraseña del usuario" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="re_pass" class="col-lg-2 control-label">Repita</label>
+											<div class="col-lg-10">
+												<input name="re_pass" class="form-control" id="re_pass" placeholder="Contraseña" type="password" title="Repita la contraseña que ingreso" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="nombre" class="col-lg-2 control-label">Nombre</label>
+											<div class="col-lg-10">
+												<input name="nombre" class="form-control" id="nombre" placeholder="Nombre y Apellido" type="text" title="Debe ingresar el departamento al que pertenece el profesor" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-lg-10 col-lg-offset-2">
+												<button type="reset" class="btn btn-default">Cancelar</button>
+												<button type="submit" class="btn btn-primary" id="enviar">Enviar</button>
+											</div>
+										</div>
+									</fieldset>
+								</form>
+								<!-- Inicio del modal con alerta por contraseñas diferentes -->
+								<div id="myModal" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove-circle"></span></button>
+												<h4 class="modal-title">Contraseña</h4>
+											</div>
+											<div class="modal-body">
+												<div class="alert alert-dismissible alert-warning">
+													<h4>¡Advertencia!</h4>
+													<p>Las Contraseñas que ha ingresado no coinciden. Por favor verifiquelas.</p>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Fin del modal con alerta por contraseñas diferentes -->
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<?php include("menu/menu.php");?>
-			<FORM  name='form1' method='post' action='../php/reg_usuario_sistema.php'>
-				<table class="tabla">
-					<tr>
-						<th colspan="2"><h2>Registro Usuarios del Sístema</h2></th>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<label>Nivel<span class="red">*</span></label>
-							<input type="radio" name="nivel" value="1" id="adm" title="Usuario con todos los privilegios para la manipulación del sistema" /><label for="adm" title="Usuario con todos los privilegios para la manipulación del sistema">Administrador</label>
-							<input type="radio" name="nivel" value="3" id="rep" title="Usuario con privilegios en el área de Reparación de Equipos" /><label for="rep" title="Usuario con privilegios en el área de Reparación de Equipos">Dep. Reparación</label>
-							<input type="radio" name="nivel" value="2" id="pres" title="Usuario con privilegios en el área de AudioVisuales"><label for="pres" title="Usuario con privilegios en el área de Reparación de Equipos">Dep. AudioVisuales</label>
-						</td>
-					</tr>
-					<tr>
-						<td><label for="user"> <div align="right">ID Usuario<span class="red">*</span></label></td>
-						<td><input type="text" name="user" id="user" placeholder="ID Usuario" size="21" title="Debe ingresar el identificador de usuario" required /><td>
-					</tr>
-					<tr>
-						<td><label for="pass"> <div align="right">Contraseña<span class="red">*</span></label></td>
-						<td><input type="password" name="pass" id="pass" placeholder="Contraseña" size="21" title="Debe ingresar la contraseña del usuario" required /><td>
-					</tr>
-					<tr>
-						<td><label for="re_pass"> <div align="right">Repita Contraseña<span class="red">*</span></label></td>
-						<td><input type="password" name="re_pass" id="re_pass" placeholder="Repita la Contraseña" size="21" title="Repita la contraseña que ingreso" required /><td>
-					</tr>
-					<tr>
-						<td><label for="nombre"> <div align="right">Nombre Y Apellido<span class="red">*</span></label></td>
-						<td><input type="text" name="nombre" id="nombre" placeholder="Nombre y Apellido del usuario" size="21" title="Debe ingresar el departamento al que pertenece el profesor" required /><td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<input type="submit" value='Guardar' id="guardar" title="Click para guardar los datos del usuario de sistema" />
-							<input type="reset" value='Restablecer' id="boton" title="Limpia los Datos Introducidos" />
-						</td>
-					</tr>
-				</table>
-			</form>
+			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
+			<!-- DIV para manejar el footer de manera dinamica -->
+			<div id="push"></div>
 		</div>
+		<!-- INICIO DEL PIE DE PAGINA -->
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">
+					Todos los derechos reservados &copy 2015 <br>
+					SARECA | <b>JuMAnY</b>
+				</p>
+			</div>
+		</div>
+		<!-- FIN DEL PIE DE PAGINA -->
+
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/validadores/funciones.js"></script>
+		<script src="../js/validadores/valida_user_sis.js"></script>
 	</body>
 </html>

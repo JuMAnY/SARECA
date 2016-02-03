@@ -12,16 +12,16 @@
 	
 	if(!$res){
 		if ($conectar->errno == 1062) {
-			header('Location: ../html/inicio.php?m=2&e=El ID de usuario "'.$user.'" esta en uso.');
+			header('Location: ../html/reg_usuario_sistema_f.php?m=2&e=El ID de usuario "'.$user.'" esta en uso.');
 			$conectar->close();
 			exit();
 		}else{
-			header('Location: ../html/inicio.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);
+			header('Location: ../html/reg_usuario_sistema_f.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);
 			$conectar->close();
 			exit();
 		}
 	}else{
-		header('Location: ../html/inicio.php?m=1&a=registraron');
+		header('Location: ../html/reg_usuario_sistema_f.php?m=1&a=registraron');
 		$conectar->close();
 	}
 ?>
