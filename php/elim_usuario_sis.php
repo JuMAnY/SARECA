@@ -8,11 +8,11 @@
 	$res = $conectar->query($sql);
 	
 	if(!$res){
-		header('Location: ../html/inicio.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);
+		header('Location: ../html/elim_usuario_sis_f.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);
 		$conectar->close();
 		exit();
 	}else{
-		header('Location: ../html/inicio.php?m=1&a=eliminaron');
+		header('Location: ../html/elim_usuario_sis_f.php?m=1&a=eliminaron');
 		$conectar->close();
 	}
 ?>
