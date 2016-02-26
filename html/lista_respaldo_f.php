@@ -1,49 +1,79 @@
 <?php require('../php/sesion/valida_sesion.php'); ?>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 	<head>
+		<meta charset="UTF-8">
 		<title>SARECA</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link type="image/x-icon" href="../imagen/logo.ico" rel="shortcut icon" />
-		<link type="text/css" href="../css/estilo.css" rel="stylesheet">
-		<script type="text/javascript" src="../js/valida_elim_resp.js"></script>
-		<script type="text/javascript" src="../js/funciones.js"></script>
+		<meta name="description" content="SARECA">
+		<meta name="keywords" content="inventario, equipos, sareca">
+		<meta name="author" content="JuMAnY">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.css">
+		<link rel="stylesheet" href="../css/general.css">
 	</head>
 	<body>
-		<div class="contenedor">
-			<div class="membrete">
-				<img title="Gobierno Bolivariano de Venezuela" src="../imagen/gobierno.jpg" width="800px" height="78px"><br>	
-				<img title="Logo de Sistema" src="../imagen/logo.jpg" width="100px" height="100px" align="left">
-				<img title="Instituto Universitario Tecnol&oacute;gico de Ejido" src="../imagen/uptm.jpg" width="90px" height="100px" align="right" > 
-				<h1> Sistema automatizado registro equipos de computacion y audiovisuales "SARECA"</h1>
-				<div class="nombre"><h4>Bienvenido:<?=' '.$_SESSION['nombre']?></h4></div>
-			</div>
-			<?php include("menu/menu.php");?>
-			<table class="tabla">
-				<tr>
-					<th><h2>Restaurar Datos SARECA</h2></th>
-				</tr>
-				<tr>
-					<td align="center">
+		<div id="wrap">
+			<?php
+				include("menu/menu.php");
+			?>
+			<!-- INICIO DEL CONTENEDOR DE LA PAGINA -->
+			<div class="container">
+				<div class="bs-docs-section">
+					<?php
+						include('mensaje/mensaje.php');
+					?>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="page-header">
+								<h1><span class="glyphicon glyphicon-hdd"></span> Base de Datos</h1>
+							</div>
+		                    <?php
+	                        $dir='C:\xampp\htdocs\sareca\php\respaldo\archivo';// ruta donde se encuentran los archivos que quiero mostrar
+	                        $directorio=opendir($dir);//opendir() funcion para el manejo de archivos
+	                        while ($nombre_archivo = readdir($directorio)) $archivos[] = $nombre_archivo;
+							$cant = count($archivos)-2;
+							if ($cant < 1) {
+								closedir($directorio);
+							?>
+								<div class="alert alert-dismissible alert-info">
+									<strong>No existen archivos de respaldo.</strong>
+								</div>
+							<?php
+							}else{
+							?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
 						<table class="tab_con">
 							<caption>Restaurar desde Archivo Local</caption>
 							<tr class="tr_con">
 								<th class="th_con">Nombre de Archivos</th>
 								<th class="th_con">Acciones</th>
 							</tr>
-		                    <?php
-		                        $dir='C:\xampp\htdocs\sareca\php\respaldo\archivo';// ruta donde se encuentran los archivos que quiero mostrar
-		                        $directorio=opendir($dir);//opendir() funcion para el manejo de archivos
-		                        while ($nombre_archivo = readdir($directorio)) $archivos[] = $nombre_archivo;
-								$cant = count($archivos)-2;
-		                        closedir($directorio);
-								if ($cant < 1) {
-							?>
-									<tr class="tr_con">
-	                                    <td colspan="2" class="td_con">No existen archivos de respaldo.</td>
-	                                </tr>
 							<?php
-								}else{
-									$directorio=opendir($dir);
+	                        		$directorio=opendir($dir);//opendir() funcion para el manejo de archivos
 			                        while ($archivo=readdir($directorio)){//readdir() funcion para el manejo de archivos
 			                            if($archivo=='.' or $archivo=='..') continue;// no muestra el . y .. que estan al principio de las carpetas
 							?>
@@ -61,10 +91,7 @@
 		                        }
 		                    ?>
 						</table>
-					</td>
-				</tr>
-				<tr>
-					<td align="center">
+
 						<FORM  name='form1' method='post' action='../php/respaldo/restaurar_bd.php' enctype="multipart/form-data">
 							<table class="tab_con">
 								<caption>Restaurar desde Archivo Externo</caption>
@@ -78,9 +105,45 @@
 								</tr>
 							</table>
 						</form>
-					</td>
-				</tr>
-			</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
+			<!-- DIV para manejar el footer de manera dinamica -->
+			<div id="push"></div>
 		</div>
+		<!-- INICIO DEL PIE DE PAGINA -->
+		<div id="footer">
+			<div class="container">
+				<p class="muted credit">
+					Todos los derechos reservados &copy 2015 <br>
+					SARECA | <b>JuMAnY</b>
+				</p>
+			</div>
+		</div>
+		<!-- FIN DEL PIE DE PAGINA -->
+
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="../js/validadores/funciones.js"></script>
+		<script src="../js/validadores/valida_elim_resp.js"></script>
 	</body>
 </html>

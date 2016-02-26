@@ -8,7 +8,7 @@
 		$dir = $directorio;
 	}
 	$user = 'root';
-	$password = '';
+	$password = 'root';
 	$comando = "C:\\xampp\mysql\bin\mysql.exe  --user=$user --password=$password sareca < $dir";
 	system($comando,$error);
 	if($error){

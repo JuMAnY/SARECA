@@ -1,7 +1,7 @@
 <?php
 	date_default_timezone_set('America/Caracas');
     $user = 'root';
-    $password = '';
+    $password = 'root';
     $nombre = 'respaldo_'.date('Y-m-d').'.sql';
     $directorio = 'C:\xampp\htdocs\sareca\php\respaldo\archivo';
     $dir = $directorio.'\\'.$nombre;
