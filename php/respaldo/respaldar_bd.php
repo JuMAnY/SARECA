@@ -7,11 +7,12 @@
     $dir = $directorio.'\\'.$nombre;
     $comando = "C:\\xampp\mysql\bin\mysqldump.exe  --user=$user --password=$password sareca > $dir";
     system($comando,$error);
-    if($error){
-        echo "<script type='text/javascript'>alert('No se ha podido respaldar los datos de SARECA')</script>";
-        echo "<script type='text/javascript'>window.location.href='../../html/inicio.php'</script>";
-    }else{
-        echo "<script type='text/javascript'>alert('Respaldo exitoso de los Datos de SARECA')</script>";
-        echo "<script type='text/javascript'>window.location.href='../../html/inicio.php'</script>";
+    
+    if ($error) {
+        header('Location: ../../html/lista_respaldo_f.php?m=2&e=¡El sistema de respaldo arrojo error desconocido!');
+        exit();
+    } else {
+        header('Location: ../../html/lista_respaldo_f.php?m=1&a=respaldaron');
+        exit();
     }
 ?>

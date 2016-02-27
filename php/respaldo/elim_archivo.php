@@ -10,4 +10,12 @@
 		echo "<script type='text/javascript'>alert('El archivo de respaldo ha sido eliminado con exito')</script>";
 		echo "<script type='text/javascript'>window.location.href='../../html/lista_respaldo_f.php'</script>";
 	}
+    
+    if (!$resultado) {
+        header('Location: ../../html/lista_respaldo_f.php?m=2&e=¡El sistema de eliminación arrojo error desconocido!');
+        exit();
+    } else {
+        header('Location: ../../html/lista_respaldo_f.php?m=1&a=eliminaron');
+        exit();
+    }
 ?>

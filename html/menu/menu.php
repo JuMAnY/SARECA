@@ -52,8 +52,7 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span> Sistema<span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="../php/respaldo/respaldar_bd.php">Respaldar Datos</a></li>
-									<li><a href="lista_respaldo_f.php">Restaurar Datos</a></li>
+									<li><a href="lista_respaldo_f.php">Gestionar Datos</a></li>
 								</ul>
 							</li>
 				<?php 	} ?>

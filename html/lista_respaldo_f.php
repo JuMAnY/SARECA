@@ -23,10 +23,24 @@
 						include('mensaje/mensaje.php');
 					?>
 					<div class="row">
-						<div class="col-lg-12">
-							<div class="page-header">
-								<h1><span class="glyphicon glyphicon-hdd"></span> Base de Datos</h1>
+						<div class="page-header">
+							<h1><span class="glyphicon glyphicon-hdd"></span> Base de Datos</h1>
+						</div>
+						<div class="col-lg-4">
+							<div class="well bs-component">
+								<form class="form-horizontal">
+									<fieldset>
+										<legend><span class="glyphicon glyphicon-download-alt"></span> Respaldar a Archivo</legend>
+										<div class="form-group">
+											<div class="col-lg-4 col-lg-offset-4">
+												<a href="../php/respaldo/respaldar_bd.php" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Respaldar" class="btn btn-primary">Respaldar</a>
+											</div>
+										</div>
+									</fieldset>
+								</form>
 							</div>
+						</div>
+						<div class="col-lg-4">
 		                    <?php
 	                        $dir='C:\xampp\htdocs\sareca\php\respaldo\archivo';// ruta donde se encuentran los archivos que quiero mostrar
 	                        $directorio=opendir($dir);//opendir() funcion para el manejo de archivos
@@ -41,86 +55,55 @@
 							<?php
 							}else{
 							?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			
-						<table class="tab_con">
-							<caption>Restaurar desde Archivo Local</caption>
-							<tr class="tr_con">
-								<th class="th_con">Nombre de Archivos</th>
-								<th class="th_con">Acciones</th>
-							</tr>
-							<?php
+								<h3><span class="glyphicon glyphicon-repeat"></span> Restaurar Archivo Local</h3>
+								<table class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th>Nombre de Archivos</th>
+											<th>Acciones</th>
+										</tr>
+									</thead>
+									<tbody>
+									<?php
 	                        		$directorio=opendir($dir);//opendir() funcion para el manejo de archivos
 			                        while ($archivo=readdir($directorio)){//readdir() funcion para el manejo de archivos
 			                            if($archivo=='.' or $archivo=='..') continue;// no muestra el . y .. que estan al principio de las carpetas
-							?>
-			                                <tr class="tr_con">
-			                                    <td class="td_con"><?=$archivo?></td>
-			                                    <td class="td_con">
-		                                        	<input type="button" value="Restaurar" id="" title="Click para restaurar los datos respaldados en este archivo" OnClick="window.location.href='../php/respaldo/restaurar_bd.php?a=<?=$archivo?>'" />
-		                                        	<input type="button" value="Descargar" id="" title="Click para descargar este archivo de respaldo" OnClick="window.location.href='../php/respaldo/archivo/<?=$archivo?>'" />
-		                                        	<input type="button" value="Eliminar" id="" title="Click para eliminar este archivo de respaldo" OnClick="elim_resp('<?=$archivo?>','')" />
-			                                    </td>
-			                                </tr>
+									?>
+										<tr>
+											<td><?=$archivo?></td>
+											<td>
+												<button type="button" class="btn btn-primary" data-href="../php/respaldo/restaurar_bd.php?a=<?=$archivo?>" data-toggle="modal" data-target="#confirm-action" data-msj="¿Desea restaurar los datos de: <?=$archivo?>?"><span class="glyphicon glyphicon-repeat"></span></button>
+												<a href="../php/respaldo/archivo/<?=$archivo?>" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Descargar" class="btn btn-primary"><span class="glyphicon glyphicon-save-file"></span></a>
+												<button type="button" class="btn btn-primary" data-href="../php/respaldo/elim_archivo.php?a=<?=$archivo?>" data-toggle="modal" data-target="#confirm-action" data-msj="¿Desea eliminar el archivo de respaldo: <?=$archivo?>?"><span class="glyphicon glyphicon-trash"></span></button>
+											</td>
+										</tr>
 		                    <?php
 		                			}
 		                			closedir($directorio);
-		                        }
+	                        }
 		                    ?>
-						</table>
-
-						<FORM  name='form1' method='post' action='../php/respaldo/restaurar_bd.php' enctype="multipart/form-data">
-							<table class="tab_con">
-								<caption>Restaurar desde Archivo Externo</caption>
-								<tr class="tr_con">
-									<th class="th_con">Nombre de Archivos</th>
-									<th class="th_con">Acciones</th>
-								</tr>
-								<tr class="tr_con">
-									<td class="td_con"><input type="file" name="respaldo" title="Click para elegir el archivo de respaldo" /></td>
-									<td class="td_con"><input type="submit" value="Restaurar" title="Click para restaurar los datos respaldados en el archivo elegido" /></td>
-								</tr>
-							</table>
-						</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+									</tbody>
+								</table>
+						</div>
+						<div class="col-lg-4">
+							<div class="well bs-component">
+								<form class="form-horizontal" method='post' action='../php/respaldo/restaurar_bd.php' enctype="multipart/form-data">
+									<fieldset>
+										<legend><span class="glyphicon glyphicon-repeat"></span> Restaurar Archivo Externo</legend>
+										<div class="form-group">
+											<div class="col-lg-2 col-lg-offset-5">
+												<label class="control-label">Buscar</label>
+											</div>
+											<input type="file" name="respaldo" title="Click para elegir el archivo de respaldo" required/>
+										</div>
+										<div class="form-group">
+											<div class="col-lg-4 col-lg-offset-4">
+												<input class="btn btn-primary" type="submit" value="Restaurar" data-toggle="tooltip" data-placement="right" title="" data-original-title="Restaurar"/>
+											</div>
+										</div>
+									</fieldset>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
