@@ -42,8 +42,8 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Reportes<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">En Construnción</a></li>
-						<li><a href="#">En Construnción</a></li>
+						<li><a href="reporte_reparacion_f.php">Reparación Equipos</a></li>
+						<li><a href="reporte_prestamo_f.php">Prestamo Equipos</a></li>
 					</ul>
 				</li>
 				<?php 	

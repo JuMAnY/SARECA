@@ -1,0 +1,77 @@
+p.parrafo{
+   font-weight: bold;
+   font-size: 20px;
+}
+table.tbreporte{
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 900px;
+}
+th.b1{
+  background: black;
+  color: white;
+}
+th.threporte, td.tdreporte{
+  border: 1px solid #000;
+}
+td.tdreporte{
+  height: 24px;
+  text-align: center;
+  vertical-align: center;
+}
+td.tdsize{
+  width: 25%;
+}
+div.boton{
+  position: fixed;
+}
+div.membrete {
+  height:90px;
+  width: 100%;
+}
+div.logo{
+  height:100%;
+  width: 790px;
+  float: left;
+}
+div.prestamo{
+  background:silver url(../imagen/logo_prestamo.png) no-repeat;
+    -webkit-background-size: auto;
+    -moz-background-size: auto;
+    -o-background-size: auto;
+    background-size: auto;
+}
+div.reparacion{
+  background:silver url(../imagen/logo_reparacion.png) no-repeat;
+    -webkit-background-size: auto;
+    -moz-background-size: auto;
+    -o-background-size: auto;
+    background-size: auto;
+}
+div.numero{
+  width: 110px;
+  height: 100%;
+  margin: 0 auto;
+  float: right;
+  -ms-display: flex;
+  display: flex;
+  /* vertical center */
+  align-items: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+div.p{
+  text-align: center;
+  width: 100%;
+  height: 20px;
+  margin: 0 auto;
+}
+div.descripcion{
+  width: 100%;
+  height: 80px;
+  margin: 0 auto;
+}
+div.marco{
+  width: 900px;
+  margin: 0 auto;
+}

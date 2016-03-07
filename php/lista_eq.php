@@ -23,7 +23,7 @@
 			<div class="col-lg-12">
 				<h3><span class="glyphicon glyphicon-ok-circle"></span> Equipos reparados</h3>
 				<div class="alert alert-dismissible alert-info">
-					<strong>No resultaron equipos REPARADOS par el periodo consultado.</strong>
+					<strong>No resultaron equipos REPARADOS para el periodo consultado.</strong>
 				</div>
 			</div>
 		</div>
@@ -101,7 +101,7 @@
 			<div class="col-lg-12">
 				<h3><span class="glyphicon glyphicon-remove-circle"></span> Equipos no reparados</h3>
 				<div class="alert alert-dismissible alert-info">
-					<strong>No resultaron equipos NO REPARADOS par el periodo consultado.</strong>
+					<strong>No resultaron equipos NO REPARADOS para el periodo consultado.</strong>
 				</div>
 			</div>
 		</div>

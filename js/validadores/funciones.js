@@ -57,3 +57,19 @@ function carga_documento(campo,div,doc,variables){
 	xmlhttp.send(variables);
 }
 
+
+//+++++++++++++++---------------------++++++++++++++ FUNCIONES DE IMPRESION +++++++++++++++---------------------++++++++++++++
+
+function impr_div(div){
+	var reporte = document.getElementById(div);
+	var ventana = window.open(' ', 'popimpr');
+	ventana.document.write( reporte.innerHTML );
+	ventana.document.close();
+	var css = ventana.document.createElement("link");
+	css.setAttribute("href", "../css/reporte.css");
+	css.setAttribute("rel", "stylesheet");
+	css.setAttribute("type", "text/css");
+	ventana.document.head.appendChild(css);
+	ventana.print();
+	ventana.close();
+}
