@@ -29,10 +29,6 @@
 		                    <div class="description wow fadeInLeftBig animated">
 		                    	<p>Sistema Automatizado Registro Equipos de Computacion y Audiovisuales.</p>
 		                    </div>
-		                    <div class="top-big-link wow fadeInUp animated">
-		                    	<a class="btn btn-link-1 scroll-link" href="#pricing">Our prices</a>
-		                    	<a class="btn btn-link-2 scroll-link" href="#features">Learn more</a>
-		                    </div>
 						</div>
 						<div class="col-sm-5 form-box wow fadeInUp animated">
 		                	<div class="form-top">
