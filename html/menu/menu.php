@@ -19,7 +19,7 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-wrench"></span> Reparación<span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="equipo_danado_f.php">Registro Equipo Dañado</a></li>
-									<li><a href="consulta_equipo_f.php">Reparación de Equipo</a></li>
+									<li><a href="consulta_equipo_f.php">Equipos en Reparación</a></li>
 									<li><a href="conslt_lista_eq_f.php">Consulta Equipos Dañados</a></li>
 								</ul>
 							</li>
