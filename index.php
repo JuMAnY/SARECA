@@ -60,7 +60,7 @@
 									</div>
 									<div class="form-group">
 										<label class="sr-only" for="pass">Contraseña</label>
-										<input name="pass" id="pass" type="password" placeholder="Contraseña..." class="form-control" title="Debe ingresar la contraseña de usuario" required />
+										<input name="pass" id="pass" type="password" placeholder="Contraseña..." pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" class="form-control" title="Formato: al menos 1 letra mayúscula, al menos 1 letra minúscula, al menos un número o caracter especial, mínimo 6 caracteres." required />
 									</div>
 									<button type="submit" class="btn btn-primary">Entrar</button>
 									<div class="form-links">
