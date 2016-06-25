@@ -57,13 +57,13 @@
 										<div class="form-group">
 											<label for="re_pass" class="col-lg-2 control-label">Repita</label>
 											<div class="col-lg-10">
-												<input name="re_pass" class="form-control" id="re_pass" placeholder="Contraseña" type="password" title="Repita la contraseña que ingreso" required>
+												<input name="re_pass" class="form-control" id="re_pass" placeholder="Contraseña" type="password" title="Repita la contraseña que ingresó" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 											<div class="col-lg-10">
-												<input name="nombre" class="form-control" id="nombre" placeholder="Nombre y Apellido" type="text" title="Debe ingresar el departamento al que pertenece el profesor" required>
+												<input name="nombre" class="form-control" id="nombre" placeholder="Nombre y Apellido" type="text" required>
 											</div>
 										</div>
 										<div class="form-group">
