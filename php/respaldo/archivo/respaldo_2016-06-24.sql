@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.16, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.5.34, for Win32 (x86)
 --
 -- Host: localhost    Database: sareca
 -- ------------------------------------------------------
--- Server version	5.6.16
+-- Server version	5.5.34
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -158,7 +158,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES ('admin','81dc9bdb52d04dc20036dbd8313ed055',1,'Francisco Gomez'),('manuel','81dc9bdb52d04dc20036dbd8313ed055',1,'Manuel Sanchez'),('prestamo','81dc9bdb52d04dc20036dbd8313ed055',2,'Lucas Zapata'),('reparacion','81dc9bdb52d04dc20036dbd8313ed055',3,'Jesus Garcia');
+INSERT INTO `usuario` VALUES ('admin','a2af12d63a5b2f03df06331ca50be18c',1,'Francisco Gomez'),('manuel','a2af12d63a5b2f03df06331ca50be18c',1,'Manuel Sanchez'),('prestamo','a2af12d63a5b2f03df06331ca50be18c',2,'Lucas Zapata'),('reparacion','a2af12d63a5b2f03df06331ca50be18c',3,'Jesus Garcia');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -171,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-15  9:10:33
+-- Dump completed on 2016-06-24 16:50:21

@@ -26,7 +26,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h3><span class="glyphicon glyphicon-wrench"></span> Equipos en Reparación</h3>
-				<table class="table table-striped table-hover">
+				<table id="" class="table table-striped table-hover pendientes">
 					<thead>
 						<tr>
 							<th>Serial</th>

@@ -10,6 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="../css/bootstrap.css">
 		<link rel="stylesheet" href="../css/general.css">
+		<link rel="stylesheet" href="../css/jquery.dataTables.min.css">
 	</head>
 	<body>
 		<div id="wrap">
@@ -33,6 +34,7 @@
 					<!-- </div> -->
 				</div>
 			</div>
+			<br>
 			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
 			<!-- DIV para manejar el footer de manera dinamica -->
 			<div id="push"></div>
@@ -41,7 +43,7 @@
 		<div id="footer">
 			<div class="container">
 				<p class="muted credit">
-					Todos los derechos reservados &copy 2015 <br>
+					Todos los derechos reservados &copy; 2015 <br>
 					SARECA | <b>JuMAnY</b>
 				</p>
 			</div>
@@ -49,8 +51,11 @@
 		<!-- FIN DEL PIE DE PAGINA -->
 
 		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/jquery.dataTables.min.js"></script>
+		<script src="../js/dataTables.bootstrap.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
 		<script src="../js/config.js"></script>
 		<script src="../js/validadores/funciones.js"></script>
+		<script src="../js/validadores/valida_inicio.js"></script>
 	</body>
 </html>
