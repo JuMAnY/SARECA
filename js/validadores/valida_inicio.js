@@ -17,8 +17,8 @@ $(document).ready(function() {
 			"oPaginate": {
 				"sFirst":    "Primero",
 				"sLast":     "Ãšltimo",
-				"sNext":     "Siguiente",
-				"sPrevious": "Anterior"
+				"sNext":     ">>",
+				"sPrevious": "<<"
 			},
 			"oAria": {
 				"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
