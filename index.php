@@ -64,12 +64,45 @@
 									</div>
 									<button type="submit" class="btn btn-primary">Entrar</button>
 									<div class="form-links">
-										<a href="#" class="launch-modal">Olvidé Contraseña</a>
+										<a href="#" class="launch-modal" data-toggle="modal" data-target="#confirm-action">Olvidé Contraseña</a>
 									</div>
 								</form>
 		                    </div>
 						</div>
 					</div>
+
+					<!-- INICIO DEL MODAL PARA CONFIRMAR ACCIÓN -->
+					<div id="confirm-action" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h4 class="modal-title">Reinicio de contraseña.</h4>
+								</div>
+								<div class="form-box wow fadeInUp animated">
+									<form id="modal-form" role="form" action="php/reset-pass.php" method="post">
+										<div class="modal-body">
+											<div class="col-lg-12">
+												<div id="mensaje">
+													<!-- Contienes los mensajes -->
+												</div>
+											</div>
+											<p>Ingrese el nombre de usuario</p>
+											<div class="form-group">
+												<label class="sr-only" for="usuario-modal">ID Usuario</label>
+												<input name="usuario-modal" id="usuario-modal" type="text" placeholder="ID Usuario..." class="form-control" title="Debe ingresar el identificador de usuario" required />
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+											<button type="submit" class="btn btn-primary btn-ok">Enviar</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- FIN DEL MODAL PARA CONFIRMAR ACCIÓN -->
 				</div>
 			</div>
 		</div>
@@ -77,9 +110,7 @@
         <script src="js/jquery-1.11.3.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/bg.js"></script>
-        
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
+		<script src="js/config.js"></script>
+		<script src="js/validadores/valida_index.js"></script>
 	</body>
 </html>
