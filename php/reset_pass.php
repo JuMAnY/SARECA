@@ -84,7 +84,7 @@ function enviarEmail($email, $password)
 
 $id_usuario = $_POST['usuario-modal'];
 
-if ($id_usuario != "") {   
+if ($id_usuario != "") {
 	
 	$sql = "SELECT correo FROM usuario WHERE Id = '$id_usuario' ";
 	$res = $conectar->query($sql);

@@ -80,7 +80,7 @@
 									<h4 class="modal-title">Reinicio de contraseña.</h4>
 								</div>
 								<div class="form-box wow fadeInUp animated">
-									<form id="modal-form" role="form" action="php/reset-pass.php" method="post">
+									<form id="modal-form" role="form" action="php/reset_pass.php" method="post">
 										<div class="modal-body">
 											<div class="col-lg-12">
 												<div id="mensaje">
@@ -90,7 +90,7 @@
 											<p>Ingrese el nombre de usuario</p>
 											<div class="form-group">
 												<label class="sr-only" for="usuario-modal">ID Usuario</label>
-												<input name="usuario-modal" id="usuario-modal" type="text" placeholder="ID Usuario..." class="form-control" title="Debe ingresar el identificador de usuario" required />
+												<input name="usuario-modal" id="usuario-modal" type="text" placeholder="ID Usuario..." class="form-control" title="Debe ingresar el identificador de usuario" required="required" />
 											</div>
 										</div>
 										<div class="modal-footer">

@@ -2,7 +2,7 @@ $(document).ready(function() {
     $("#modal-form").submit(function(event) {
 		event.preventDefault();
 		$.ajax( {
-			url:'php/reset-pass.php',
+			url:'php/reset_pass.php',
 			type:'post',
 			dataType:'json',
 			data:$("#modal-form").serializeArray()
