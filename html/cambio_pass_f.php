@@ -34,13 +34,13 @@
 										<div class="form-group">
 											<label for="pass" class="col-lg-2 control-label">Nueva</label>
 											<div class="col-lg-10">
-												<input name="pass" class="form-control" id="pass" placeholder="Contraseña" type="password" title="Debe ingresar la nueva contraseña" required>
+												<input name="pass" class="form-control" id="pass" placeholder="Contraseña" type="password" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Formato: al menos 1 letra mayúscula, al menos 1 letra minúscula, al menos un número o caracter especial, mínimo 6 caracteres." required>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="re_pass" class="col-lg-2 control-label">Repita</label>
 											<div class="col-lg-10">
-												<input name="re_pass" class="form-control" id="re_pass" placeholder="Contraseña" type="password" title="Repita la contraseña que ingreso" required>
+												<input name="re_pass" class="form-control" id="re_pass" placeholder="Contraseña" type="password" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Repita la contraseña que ingreso" required>
 											</div>
 										</div>
 										<div class="form-group">

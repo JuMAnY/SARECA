@@ -51,19 +51,25 @@
 										<div class="form-group">
 											<label for="pass" class="col-lg-2 control-label">Contraseña</label>
 											<div class="col-lg-10">
-												<input name="pass" class="form-control" id="pass" placeholder="Contraseña" type="password" title="Debe ingresar la contraseña del usuario" required>
+												<input name="pass" class="form-control" id="pass" placeholder="Contraseña" type="password" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Formato: al menos 1 letra mayúscula, al menos 1 letra minúscula, al menos un número o caracter especial, mínimo 6 caracteres." required>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="re_pass" class="col-lg-2 control-label">Repita</label>
 											<div class="col-lg-10">
-												<input name="re_pass" class="form-control" id="re_pass" placeholder="Contraseña" type="password" title="Repita la contraseña que ingresó" required>
+												<input name="re_pass" class="form-control" id="re_pass" placeholder="Contraseña" type="password" pattern="(?=^.{6,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Repita la contraseña que ingresó" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 											<div class="col-lg-10">
 												<input name="nombre" class="form-control" id="nombre" placeholder="Nombre y Apellido" type="text" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="correo" class="col-lg-2 control-label">Correo</label>
+											<div class="col-lg-10">
+												<input name="correo" class="form-control" id="correo" placeholder="Correo" type="email" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" title="Debe cumplir el formato: ejemplo@ejemplo.com" required>
 											</div>
 										</div>
 										<div class="form-group">

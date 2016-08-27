@@ -6,8 +6,9 @@
 	$user = $_POST['user'];
 	$pass = md5($_POST['pass']);
 	$nombre = $_POST['nombre'];
+	$correo = $_POST['correo'];
 	
-	$sql = "INSERT INTO usuario (Id, Contrasena, Nivel, Nombre) VALUES ('$user','$pass','$nivel','$nombre')";
+	$sql = "INSERT INTO usuario (Id, Contrasena, Nivel, Nombre, correo) VALUES ('$user','$pass','$nivel','$nombre','$correo')";
 	$res = $conectar->query($sql);
 	
 	if(!$res){
