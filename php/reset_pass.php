@@ -75,7 +75,7 @@ function enviarEmail($email, $password)
 
 	$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
 	$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-	$cabeceras .= 'From: SARECA <mimail@codedrinks.com>' . "\r\n";
+	$cabeceras .= 'From: SARECA <soportesareca@gmail.com>' . "\r\n";
 
 	$submit = mail($email, 'Reiniciar contraseña', $mensaje, $cabeceras);
 
@@ -105,7 +105,7 @@ if ($id_usuario != "") {
 				$mensaje = '
 				<div class="alert alert-dismissible alert-info fadeInUp animated">
 					<button type="button" class="close" data-dismiss="alert"><span class="glyphicon glyphicon-remove-circle"></span></button>
-					<strong>Un correo ha sido enviado a su cuenta de correo electronico con una nueva contraseña.</strong>'.$password.'
+					<strong>Un correo ha sido enviado a su cuenta de correo electronico con una nueva contraseña.</strong>
 				</div>';
 			} else {
 				$mensaje = '
