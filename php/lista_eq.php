@@ -1,14 +1,9 @@
 <?php
 	require('conexion/conexion.php');
 
-	$mes = $_POST['m'];
-	$periodo_ini = $_POST['m'].'-01';
-	$periodo_fin = $_POST['m'].'-'.date('t',strtotime($_POST['m']));
-
 	$sql = "SELECT *
 			FROM reparacion
-			WHERE Fecha_entrada BETWEEN '$periodo_ini' AND '$periodo_fin'
-			AND resultado = 2";
+			WHERE resultado = 2";
 	$res = $conectar->query($sql);
 	
 	if(!$res){
@@ -23,7 +18,7 @@
 			<div class="col-lg-12">
 				<h3><span class="glyphicon glyphicon-ok-circle"></span> Equipos reparados</h3>
 				<div class="alert alert-dismissible alert-info">
-					<strong>No resultaron equipos REPARADOS para el periodo consultado.</strong>
+					<strong>No resultaron equipos REPARADOS.</strong>
 				</div>
 			</div>
 		</div>
@@ -33,7 +28,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h3><span class="glyphicon glyphicon-ok-circle"></span> Equipos reparados</h3>
-				<table class="table table-striped table-hover">
+				<table id="" class="table table-striped table-hover consulta">
 					<thead>
 						<tr>
 							<th>Serial</th>
@@ -44,11 +39,6 @@
 							<th>Fecha Entrada</th>
 						</tr>
 					</thead>
-					<tfoot>
-						<tr>
-							<th colspan="6">Cantidad de resultados: <?=$res->num_rows?></th>
-						</tr>
-					</tfoot>
 					<tbody>
 					<?php
 					while ($fila = $res->fetch_object()) {
@@ -85,8 +75,7 @@
 
 	$sql = "SELECT *
 			FROM reparacion
-			WHERE Fecha_entrada BETWEEN '$periodo_ini' AND '$periodo_fin'
-			AND resultado = 1";
+			WHERE resultado = 1";
 	$res = $conectar->query($sql);
 	
 	if(!$res){
@@ -101,7 +90,7 @@
 			<div class="col-lg-12">
 				<h3><span class="glyphicon glyphicon-remove-circle"></span> Equipos no reparados</h3>
 				<div class="alert alert-dismissible alert-info">
-					<strong>No resultaron equipos NO REPARADOS para el periodo consultado.</strong>
+					<strong>No resultaron equipos NO REPARADOS.</strong>
 				</div>
 			</div>
 		</div>
@@ -111,7 +100,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h3><span class="glyphicon glyphicon-remove-circle"></span> Equipos no reparados</h3>
-				<table class="table table-striped table-hover">
+				<table class="table table-striped table-hover consulta">
 					<thead>
 						<tr>
 							<th>Serial</th>

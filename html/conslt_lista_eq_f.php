@@ -10,6 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="../css/bootstrap.css">
 		<link rel="stylesheet" href="../css/general.css">
+		<link rel="stylesheet" href="../css/jquery.dataTables.min.css">
 	</head>
 	<body>
 		<div id="wrap">
@@ -27,24 +28,9 @@
 							<div class="page-header">
 								<h1><span class="glyphicon glyphicon-wrench"></span> Consulta de Reparación</h1>
 							</div>
-							<div class="well bs-component">
-								<form class="form-horizontal">
-									<fieldset>
-										<legend><span class="glyphicon glyphicon-search"></span> Periodo</legend>
-										<div class="form-group">
-											<label for="mes" class="col-lg-2 control-label">Mes y Año</label>
-											<div class="col-lg-4">
-												<input name="mes" class="form-control" id="mes" type="month" title="Debe eligir el mes y año del periodo de reparación">
-											</div>
-										</div>
-									</fieldset>
-								</form>
-							</div>	
-							<!-- DIV DONDE SE CARGARA LA CONSULTA DE EQUIPOS REPARADOS Y NO REPARADOS -->
-							<div id="carga_tabla"></div>
-							<!-- ******************************************************************** -->
 						</div>
 					</div>
+					<?php include '../php/lista_eq.php'; ?>
 				</div>
 			</div>
 			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
@@ -56,7 +42,7 @@
 		<div id="footer">
 			<div class="container">
 				<p class="muted credit">
-					Todos los derechos reservados &copy 2015 <br>
+					Todos los derechos reservados &copy; 2015 <br>
 					SARECA | <b>JuMAnY</b>
 				</p>
 			</div>
@@ -64,9 +50,10 @@
 		<!-- FIN DEL PIE DE PAGINA -->
 
 		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/jquery.dataTables.min.js"></script>
+		<script src="../js/dataTables.bootstrap.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
 		<script src="../js/config.js"></script>
-		<script src="../js/validadores/funciones.js"></script>
 		<script src="../js/validadores/valida_conslt_eq_da.js"></script>
 	</body>
 </html>
