@@ -64,7 +64,7 @@
 											<div class="form-group">
 												<label for="select" class="col-lg-2 control-label">Carnet</label>
 												<div class="col-lg-10">
-													<select name="carnet" class="form-control" id="carnet" title="Debe elegir el número de carnet del profesor" required>
+													<select name="carnet" class="form-control" id="carnet" title="Debe elegir el número de carnet" required>
 														<option></option>
 														<?php
 														while ($fila_per = $res_per->fetch_object())

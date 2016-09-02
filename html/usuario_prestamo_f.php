@@ -34,31 +34,31 @@
 										<div class="form-group">
 											<label for="carnet" class="col-lg-2 control-label">Carnet</label>
 											<div class="col-lg-10">
-												<input name="carnet" class="form-control" id="carnet" placeholder="Carnet del Profesor" type="number" title="Debe ingresar el número de carnet del profesor" required>
+												<input name="carnet" class="form-control" id="carnet" placeholder="Carnet" type="number" title="Debe ingresar el número de carnet" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="cedula" class="col-lg-2 control-label">Cédula</label>
 											<div class="col-lg-10">
-												<input name="cedula"class="form-control" id="cedula" placeholder="Cédula del Profesor" type="number" title="Debe ingresar el número de cédula del profesor" required>
+												<input name="cedula"class="form-control" id="cedula" placeholder="Cédula" type="number" title="Debe ingresar el número de cédula" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 											<div class="col-lg-10">
-												<input name="nombre" class="form-control" id="nombre" placeholder="Nombre y Apellido del profesor" type="text" title="Debe ingresar el nombre completo del profesor" pattern="[a-zA-Z ]*" required>
+												<input name="nombre" class="form-control" id="nombre" placeholder="Nombre y Apellido" type="text" title="Debe ingresar el nombre completo" pattern="[a-zA-Z ]*" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="departamento" class="col-lg-2 control-label">Área</label>
 											<div class="col-lg-10">
-												<input name="departamento" class="form-control" id="departamento" placeholder="Departamento" type="text" title="Debe ingresar el departamento al que pertenece el profesor" pattern="[a-zA-Z0-9 ]*" required>
+												<input name="departamento" class="form-control" id="departamento" placeholder="Departamento" type="text" title="Debe ingresar el departamento al que pertenece" pattern="[a-zA-Z0-9 ]*" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="cargo" class="col-lg-2 control-label">Cargo</label>
 											<div class="col-lg-10">
-												<input name="cargo" class="form-control" id="cargo" placeholder="Cargo del profesor" type="text" title="Debe ingresar el cargo que ocupa el profesor" pattern="[a-zA-Z ]*" required>
+												<input name="cargo" class="form-control" id="cargo" placeholder="Cargo" type="text" title="Debe ingresar el cargo que ocupa" pattern="[a-zA-Z ]*" required>
 											</div>
 										</div>
 										<div class="form-group">
