@@ -77,7 +77,7 @@
 										<div class="form-group">
 											<label for="inputEmail" class="col-lg-2 control-label">Responsable</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="responsable" type="text" value="<?=$fila->Nombre?>" title="Persona que regstró el equipo ó el encargado de repararlo" disabled="">
+												<input class="form-control" id="responsable" type="text" value="<?=$fila->Nombre?>" title="Persona que registró el equipo ó el encargado de repararlo" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
@@ -143,7 +143,7 @@
 		<div id="footer">
 			<div class="container">
 				<p class="muted credit">
-					Todos los derechos reservados &copy 2015 <br>
+					Todos los derechos reservados &copy; 2015 <br>
 					SARECA | <b>JuMAnY</b>
 				</p>
 			</div>
