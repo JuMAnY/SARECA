@@ -9,8 +9,9 @@
 	$observacion = $_POST['Observacion'];
 	$fecha_entrada = date('Y-m-d');
 	$estado = $_POST['estado'];
+	$responsable = $_SESSION['id'];
 	
-	$sql = "INSERT INTO reparacion (Serial_equipo, Nucleo, Departamento, falla, Estado, observacion, Fecha_entrada, resultado) VALUES ('$serial','$nucleo','$departamento','$descripcion',1,'$observacion','$fecha_entrada',1)";
+	$sql = "INSERT INTO reparacion (Serial_equipo, Nucleo, Departamento, falla, Estado, observacion, Fecha_entrada, resultado, responsable) VALUES ('$serial','$nucleo','$departamento','$descripcion',1,'$observacion','$fecha_entrada',1,'$responsable')";
 	$res = $conectar->query($sql);
 	
 	if (!$res) {

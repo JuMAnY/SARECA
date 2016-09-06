@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.16, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.26, for Win32 (x86)
 --
 -- Host: localhost    Database: sareca
 -- ------------------------------------------------------
--- Server version	5.6.16
+-- Server version	5.6.26
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -121,8 +121,11 @@ CREATE TABLE `reparacion` (
   `resultado` int(1) NOT NULL,
   `observacion_reaparacion` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha_salida` date NOT NULL,
+  `responsable` varchar(50) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`Id`),
-  KEY `Serial_equipo` (`Serial_equipo`)
+  KEY `Serial_equipo` (`Serial_equipo`),
+  KEY `responsable` (`responsable`),
+  CONSTRAINT `reparacion_ibfk_1` FOREIGN KEY (`responsable`) REFERENCES `usuario` (`Id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -132,7 +135,7 @@ CREATE TABLE `reparacion` (
 
 LOCK TABLES `reparacion` WRITE;
 /*!40000 ALTER TABLE `reparacion` DISABLE KEYS */;
-INSERT INTO `reparacion` VALUES (1,'e33ee3','Ejido','Informatica','Se robaron la memoria RAM',1,'Creo que fue Juan','2015-10-07',2,'Se devolvio la memoria','2015-10-08');
+INSERT INTO `reparacion` VALUES (1,'e33ee3','Ejido','Informatica','Se robaron la memoria RAM',1,'Creo que fue Juan','2015-10-07',2,'Se devolvio la memoria','2015-10-08','reparacion');
 /*!40000 ALTER TABLE `reparacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,6 +151,7 @@ CREATE TABLE `usuario` (
   `Contrasena` varchar(32) COLLATE utf8_spanish_ci NOT NULL,
   `Nivel` int(1) NOT NULL,
   `Nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -158,7 +162,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES ('admin','81dc9bdb52d04dc20036dbd8313ed055',1,'Francisco Gomez'),('manuel','81dc9bdb52d04dc20036dbd8313ed055',1,'Manuel Sanchez'),('prestamo','81dc9bdb52d04dc20036dbd8313ed055',2,'Lucas Zapata'),('reparacion','81dc9bdb52d04dc20036dbd8313ed055',3,'Jesus Garcia');
+INSERT INTO `usuario` VALUES ('admin','a2af12d63a5b2f03df06331ca50be18c',1,'Francisco Gomez','soportesareca@gmail.com'),('manuel','a2af12d63a5b2f03df06331ca50be18c',1,'Manuel Sanchez','soportesareca@gmail.com'),('prestamo','a2af12d63a5b2f03df06331ca50be18c',2,'Lucas Zapata','soportesareca@gmail.com'),('reparacion','a2af12d63a5b2f03df06331ca50be18c',3,'Jesus Garcia','soportesareca@gmail.com');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -171,4 +175,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-12  9:58:47
+-- Dump completed on 2016-09-06 18:13:41
