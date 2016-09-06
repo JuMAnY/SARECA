@@ -4,8 +4,9 @@
 
 	$serial = $_GET['s'];
 	
-	$sql = "SELECT *
+	$sql = "SELECT reparacion.*, usuario.Nombre
 			FROM reparacion
+			JOIN usuario ON usuario.Id = reparacion.responsable
 			WHERE Serial_equipo = '$serial'
 			AND Estado = 1";
 	$res = $conectar->query($sql);
@@ -68,6 +69,18 @@
 											</div>
 										</div>
 										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">Entrada</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="entrada" type="text" value="<?=$d.'-'.$m.'-'.$a?>" title="Fecha en la que ingreso al taller el equipo" disabled="">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inputEmail" class="col-lg-2 control-label">Responsable</label>
+											<div class="col-lg-10">
+												<input class="form-control" id="responsable" type="text" value="<?=$fila->Nombre?>" title="Persona que regstró el equipo ó el encargado de repararlo" disabled="">
+											</div>
+										</div>
+										<div class="form-group">
 											<label for="falla" class="col-lg-2 control-label">Falla</label>
 											<div class="col-lg-10">
 												<textarea class="form-control" rows="3" id="falla" disabled=""><?=$fila->falla?></textarea>
@@ -79,12 +92,6 @@
 											<div class="col-lg-10">
 												<textarea class="form-control" rows="3" id="observacion" disabled=""><?=$fila->observacion?></textarea>
 												<span class="help-block">Observaciones sobre el equipo como: tipo, componentes, etc.</span>
-											</div>
-										</div>
-										<div class="form-group">
-											<label for="inputEmail" class="col-lg-2 control-label">Entrada</label>
-											<div class="col-lg-10">
-												<input class="form-control" id="inputEmail" type="text" value="<?=$d.'-'.$m.'-'.$a?>" disabled="">
 											</div>
 										</div>
 									</fieldset>
