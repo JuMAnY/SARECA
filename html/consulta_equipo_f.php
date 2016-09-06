@@ -2,7 +2,10 @@
 	require('../php/sesion/valida_sesion.php');
 	require('../php/conexion/conexion.php');
 	
-	$sql = "SELECT * FROM reparacion WHERE Estado = 1";
+	$sql = "SELECT reparacion.*, usuario.Nombre
+			FROM reparacion
+			JOIN usuario ON usuario.Id = reparacion.responsable
+			WHERE Estado = 1";
 	$res = $conectar->query($sql);
 	
 	if(!$res){
@@ -59,6 +62,7 @@
 											<th>Falla</th>
 											<th>Observacion</th>
 											<th>Fecha Entrada</th>
+											<th>Responsable</th>
 											<th>Elegir</th>
 										</tr>
 									</thead>
@@ -74,6 +78,7 @@
 													<td>%s</td>
 													<td>%s</td>
 													<td>%d-%d-%d</td>
+													<td>%s</td>
 													<td><a href="consulta_reparacion_f.php?s=%s" class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="" data-original-title="Reparar"><span class="glyphicon glyphicon-wrench"></span> </a></td>
 												</tr>',
 												$fila->Serial_equipo,
@@ -84,6 +89,7 @@
 												$d,
 												$m,
 												$a,
+												$fila->Nombre,
 												$fila->Serial_equipo
 											);
 										}
@@ -105,7 +111,7 @@
 		<div id="footer">
 			<div class="container">
 				<p class="muted credit">
-					Todos los derechos reservados &copy 2015 <br>
+					Todos los derechos reservados &copy; 2015 <br>
 					SARECA | <b>JuMAnY</b>
 				</p>
 			</div>
