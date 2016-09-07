@@ -1,8 +1,9 @@
 <?php
 	require('conexion/conexion.php');
 
-	$sql = "SELECT *
+	$sql = "SELECT reparacion.*, usuario.Nombre
 			FROM reparacion
+			JOIN usuario ON usuario.Id = reparacion.responsable
 			WHERE resultado = 2";
 	$res = $conectar->query($sql);
 	
@@ -36,7 +37,8 @@
 							<th>Departamento</th>
 							<th>Falla</th>
 							<th>Observacion</th>
-							<th>Fecha Entrada</th>
+							<th>Responsable</th>
+							<th>Entrada</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -50,6 +52,7 @@
 								<td>%s</td>
 								<td>%s</td>
 								<td>%s</td>
+								<td>%s</td>
 								<td>%d-%d-%d</td>
 							</tr>',
 							$fila->Serial_equipo,
@@ -57,6 +60,7 @@
 							$fila->Departamento,
 							$fila->falla,
 							$fila->observacion,
+							$fila->Nombre,
 							$d,
 							$m,
 							$a
@@ -73,8 +77,9 @@
 	/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 
-	$sql = "SELECT *
+	$sql = "SELECT reparacion.*, usuario.Nombre
 			FROM reparacion
+			JOIN usuario ON usuario.Id = reparacion.responsable
 			WHERE resultado = 1";
 	$res = $conectar->query($sql);
 	
@@ -108,20 +113,17 @@
 							<th>Departamento</th>
 							<th>Falla</th>
 							<th>Observacion</th>
-							<th>Fecha Entrada</th>
+							<th>Responsable</th>
+							<th>Entrada</th>
 						</tr>
 					</thead>
-					<tfoot>
-						<tr>
-							<th colspan="6">Cantidad de resultados: <?=$res->num_rows?></th>
-						</tr>
-					</tfoot>
 					<tbody>
 					<?php
 					while ($fila = $res->fetch_object()) {
 						list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
 						printf('
 							<tr>
+								<td>%s</td>
 								<td>%s</td>
 								<td>%s</td>
 								<td>%s</td>
@@ -134,6 +136,7 @@
 							$fila->Departamento,
 							$fila->falla,
 							$fila->observacion,
+							$fila->Nombre,
 							$d,
 							$m,
 							$a
