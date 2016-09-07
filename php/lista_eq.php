@@ -39,12 +39,14 @@
 							<th>Observacion</th>
 							<th>Responsable</th>
 							<th>Entrada</th>
+							<th>Finalizado</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php
 					while ($fila = $res->fetch_object()) {
 						list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
+						list($af,$mf,$df) = explode('-',$fila->Fecha_salida);
 						printf('
 							<tr>
 								<td>%s</td>
@@ -53,6 +55,7 @@
 								<td>%s</td>
 								<td>%s</td>
 								<td>%s</td>
+								<td>%d-%d-%d</td>
 								<td>%d-%d-%d</td>
 							</tr>',
 							$fila->Serial_equipo,
@@ -63,7 +66,10 @@
 							$fila->Nombre,
 							$d,
 							$m,
-							$a
+							$a,
+							$df,
+							$mf,
+							$af
 						);
 					}
 					?>
@@ -115,12 +121,14 @@
 							<th>Observacion</th>
 							<th>Responsable</th>
 							<th>Entrada</th>
+							<th>Finalizado</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php
 					while ($fila = $res->fetch_object()) {
 						list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
+						list($af,$mf,$df) = explode('-',$fila->Fecha_salida);
 						printf('
 							<tr>
 								<td>%s</td>
@@ -129,6 +137,7 @@
 								<td>%s</td>
 								<td>%s</td>
 								<td>%s</td>
+								<td>%d-%d-%d</td>
 								<td>%d-%d-%d</td>
 							</tr>',
 							$fila->Serial_equipo,
@@ -139,7 +148,10 @@
 							$fila->Nombre,
 							$d,
 							$m,
-							$a
+							$a,
+							$df,
+							$mf,
+							$af
 						);
 					}
 					?>
