@@ -119,14 +119,14 @@ CREATE TABLE `reparacion` (
   `observacion` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha_entrada` date NOT NULL,
   `resultado` int(1) NOT NULL,
-  `observacion_reaparacion` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `observacion_reaparacion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha_salida` date NOT NULL,
   `responsable` varchar(50) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `Serial_equipo` (`Serial_equipo`),
   KEY `responsable` (`responsable`),
   CONSTRAINT `reparacion_ibfk_1` FOREIGN KEY (`responsable`) REFERENCES `usuario` (`Id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +135,7 @@ CREATE TABLE `reparacion` (
 
 LOCK TABLES `reparacion` WRITE;
 /*!40000 ALTER TABLE `reparacion` DISABLE KEYS */;
-INSERT INTO `reparacion` VALUES (1,'e33ee3','Ejido','Informatica','Se robaron la memoria RAM',1,'Creo que fue Juan','2015-10-07',2,'Se devolvio la memoria','2015-10-08','reparacion');
+INSERT INTO `reparacion` VALUES (1,'e33ee3','Ejido','Informatica','Se robaron la memoria RAM',1,'Creo que fue Juan','2015-10-07',2,'Se devolvio la memoria','2015-10-08','reparacion'),(2,'dsfsgdfg','Ejido','Laboratorio 1','Se reinicia',2,'CPU i7','2016-09-06',2,'El problema lo causaba alta temperatura a razÃ³n d','2016-09-06','manuel');
 /*!40000 ALTER TABLE `reparacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,4 +175,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-06 18:13:41
+-- Dump completed on 2016-09-06 21:55:50
