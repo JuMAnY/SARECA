@@ -109,7 +109,7 @@
 		<div id="footer">
 			<div class="container">
 				<p class="muted credit">
-					Todos los derechos reservados &copy 2015 <br>
+					Todos los derechos reservados &copy; 2015 <br>
 					SARECA | <b>JuMAnY</b>
 				</p>
 			</div>
@@ -119,7 +119,6 @@
 		<script src="../js/jquery-1.11.3.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
 		<script src="../js/config.js"></script>
-		<script src="../js/validadores/funciones.js"></script>
 		<script src="../js/validadores/valida_devolucion.js"></script>
 	</body>
 </html>

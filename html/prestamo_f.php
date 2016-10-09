@@ -75,6 +75,12 @@
 												</div>
 											</div>
 											<div class="form-group">
+												<label for="carrera" class="col-lg-2 control-label">Carrera</label>
+												<div class="col-lg-10">
+													<input name="carrera" class="form-control" id="departamento" placeholder="Carrera" type="text" title="Debe ingresar la carrera a la que pertenece" pattern="[a-zA-Z0-9 ]*" required>
+												</div>
+											</div>
+											<div class="form-group">
 												<label for="Serial_equipo" class="col-lg-2 control-label">Serial</label>
 												<div class="col-lg-10">
 													<select name="Serial_equipo" class="form-control" id="Serial_equipo" title="Debe elegir el serial del equipo a prestar" required>

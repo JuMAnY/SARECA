@@ -3,12 +3,13 @@
 	require('conexion/conexion.php');
 	
 	$carnet = $_POST['carnet'];
+	$carrera = $_POST['carrera'];
 	$serial = $_POST['Serial_equipo'];
 	$fe_pre = date('Y-m-d');
 	$id_user = $_SESSION['id'];
 
 
-	$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, Id_usuario, Carnet, Estado) VALUES ('$serial','$fe_pre','$id_user','$carnet',2)";
+	$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, Id_usuario, Carnet, carrera, Estado) VALUES ('$serial','$fe_pre','$id_user','$carnet','$carrera',2)";
 	$res = $conectar->query($sql);
 	
 	if(!$res){

@@ -5,10 +5,9 @@
 	$carnet = $_POST['carnet'];
 	$cedula = $_POST['cedula'];
 	$nombre = $_POST['nombre'];
-	$departamento = $_POST['departamento'];
 	$cargo = $_POST['cargo'];
 	
-	$sql = "INSERT INTO persona (Carnet, Cedula, Nombre, Departamento, Cargo) VALUES ('$carnet','$cedula','$nombre','$departamento','$cargo')";
+	$sql = "INSERT INTO persona (Carnet, Cedula, Nombre, Cargo) VALUES ('$carnet','$cedula','$nombre','$cargo')";
 	$res = $conectar->query($sql);
 	
 	if(!$res){

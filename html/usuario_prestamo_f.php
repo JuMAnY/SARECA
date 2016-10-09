@@ -50,12 +50,6 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label for="departamento" class="col-lg-2 control-label">Área</label>
-											<div class="col-lg-10">
-												<input name="departamento" class="form-control" id="departamento" placeholder="Departamento" type="text" title="Debe ingresar el departamento al que pertenece" pattern="[a-zA-Z0-9 ]*" required>
-											</div>
-										</div>
-										<div class="form-group">
 											<label for="cargo" class="col-lg-2 control-label">Cargo</label>
 											<div class="col-lg-10">
 												<input name="cargo" class="form-control" id="cargo" placeholder="Cargo" type="text" title="Debe ingresar el cargo que ocupa" pattern="[a-zA-Z ]*" required>
