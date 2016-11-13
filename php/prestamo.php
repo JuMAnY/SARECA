@@ -9,7 +9,7 @@
 	$id_user = $_SESSION['id'];
 
 
-	$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, Id_usuario, Carnet, carrera, Estado) VALUES ('$serial','$fe_pre',curTime(),'$id_user','$carnet','$carrera',2)";
+	$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, Id_usuario_prestador, Carnet, carrera, Estado) VALUES ('$serial','$fe_pre',curTime(),'$id_user','$carnet','$carrera',2)";
 	$res = $conectar->query($sql);
 	
 	if(!$res){
