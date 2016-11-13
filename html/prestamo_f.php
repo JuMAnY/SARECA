@@ -95,6 +95,13 @@
 												</div>
 											</div>
 											<div class="form-group">
+												<label for="observacion" class="col-lg-2 control-label">Observación</label>
+												<div class="col-lg-10">
+													<textarea name="observacion" class="form-control" rows="3" id="observacion" title="En caso que desee hacer alguna acotación, use este campo"></textarea>
+													<span class="help-block">En caso que desee hacer alguna acotación, use este campo.</span>
+												</div>
+											</div>
+											<div class="form-group">
 												<div class="col-lg-10 col-lg-offset-2">
 													<button type="reset" class="btn btn-default">Cancelar</button>
 													<button type="submit" class="btn btn-primary">Enviar</button>

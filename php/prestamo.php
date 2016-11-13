@@ -7,9 +7,13 @@
 	$serial = $_POST['Serial_equipo'];
 	$fe_pre = date('Y-m-d');
 	$id_user = $_SESSION['id'];
+	if (isset($_POST['observacion'])) {
+		$observacion = $_POST['observacion'];
+		$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, Id_usuario_prestador, Carnet, carrera, Estado, observacion_prestamo) VALUES ('$serial','$fe_pre',curTime(),'$id_user','$carnet','$carrera',2,'$observacion')";
+	} else {
+		$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, Id_usuario_prestador, Carnet, carrera, Estado) VALUES ('$serial','$fe_pre',curTime(),'$id_user','$carnet','$carrera',2)";
+	}
 
-
-	$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, Id_usuario_prestador, Carnet, carrera, Estado) VALUES ('$serial','$fe_pre',curTime(),'$id_user','$carnet','$carrera',2)";
 	$res = $conectar->query($sql);
 	
 	if(!$res){

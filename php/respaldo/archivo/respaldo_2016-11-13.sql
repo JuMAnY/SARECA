@@ -36,7 +36,7 @@ CREATE TABLE `equipo_audiovisual` (
 
 LOCK TABLES `equipo_audiovisual` WRITE;
 /*!40000 ALTER TABLE `equipo_audiovisual` DISABLE KEYS */;
-INSERT INTO `equipo_audiovisual` VALUES ('02e5rt',1,1),('40fg9e',2,2);
+INSERT INTO `equipo_audiovisual` VALUES ('02e5rt',1,1),('40fg9e',2,2),('6T5r',1,3);
 /*!40000 ALTER TABLE `equipo_audiovisual` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,7 +51,6 @@ CREATE TABLE `persona` (
   `Carnet` int(9) NOT NULL,
   `Cedula` int(8) NOT NULL,
   `Nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `Departamento` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Cargo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`Carnet`),
   KEY `Cedula` (`Cedula`)
@@ -64,7 +63,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (234234,8706893,'rwerwerwer','werwerwer','werwerwer'),(5546456,2147483647,'ljklj','ljkljk','ljlj'),(10300601,18191839,'Pedro Perez','Informatica','Estudiante');
+INSERT INTO `persona` VALUES (234234,8706893,'rwerwerwer','werwerwer'),(5546456,2147483647,'ljklj','ljlj'),(10300601,18191839,'Pedro Perez','Estudiante');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,17 +78,20 @@ CREATE TABLE `prestamo` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Serial_equipo` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha_prestamo` date NOT NULL,
-  `Id_usuario` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `hora_prestamo` time NOT NULL,
+  `Id_usuario_prestador` varchar(50) CHARACTER SET latin1 NOT NULL,
   `Carnet` int(9) NOT NULL,
+  `carrera` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `Estado` int(1) NOT NULL,
+  `observacion_prestamo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`Id`),
-  KEY `Id_usuario` (`Id_usuario`),
+  KEY `Id_usuario` (`Id_usuario_prestador`),
   KEY `Carnet` (`Carnet`),
   KEY `Serial_equipo` (`Serial_equipo`),
-  CONSTRAINT `prestamo_ibfk_3` FOREIGN KEY (`Id_usuario`) REFERENCES `usuario` (`Id`) ON UPDATE CASCADE,
+  CONSTRAINT `prestamo_ibfk_3` FOREIGN KEY (`Id_usuario_prestador`) REFERENCES `usuario` (`Id`) ON UPDATE CASCADE,
   CONSTRAINT `prestamo_ibfk_4` FOREIGN KEY (`Carnet`) REFERENCES `persona` (`Carnet`) ON UPDATE CASCADE,
   CONSTRAINT `prestamo_ibfk_5` FOREIGN KEY (`Serial_equipo`) REFERENCES `equipo_audiovisual` (`Serial`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,7 +100,7 @@ CREATE TABLE `prestamo` (
 
 LOCK TABLES `prestamo` WRITE;
 /*!40000 ALTER TABLE `prestamo` DISABLE KEYS */;
-INSERT INTO `prestamo` VALUES (1,'40fg9e','2015-10-07','reparacion',234234,1),(2,'02e5rt','2015-10-07','reparacion',10300601,1),(3,'02e5rt','2015-10-07','reparacion',10300601,1),(4,'40fg9e','2015-10-07','reparacion',5546456,1),(5,'02e5rt','2015-10-07','admin',10300601,1),(6,'02e5rt','2015-10-08','admin',10300601,1),(7,'40fg9e','2015-10-08','admin',10300601,2),(8,'02e5rt','2015-10-15','admin',10300601,1);
+INSERT INTO `prestamo` VALUES (1,'40fg9e','2015-10-07','12:15:13','reparacion',234234,'informatica',1,''),(2,'02e5rt','2015-10-07','06:31:19','reparacion',10300601,'informatica',1,''),(3,'02e5rt','2015-10-07','13:18:31','reparacion',10300601,'informatica',1,''),(4,'40fg9e','2015-10-07','14:06:38','reparacion',5546456,'informatica',1,''),(5,'02e5rt','2015-10-07','14:04:56','admin',10300601,'informatica',1,''),(6,'02e5rt','2015-10-08','18:36:13','admin',10300601,'informatica',1,''),(7,'40fg9e','2015-10-08','10:43:05','admin',10300601,'informatica',2,''),(8,'02e5rt','2015-10-15','07:45:07','admin',10300601,'informatica',1,''),(9,'02e5rt','2016-09-06','11:40:20','manuel',234234,'informatica',1,''),(10,'02e5rt','2016-10-09','22:22:40','admin',234234,'Informatica',1,'');
 /*!40000 ALTER TABLE `prestamo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +164,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES ('admin','a2af12d63a5b2f03df06331ca50be18c',1,'Francisco Gomez','soportesareca@gmail.com'),('manuel','a2af12d63a5b2f03df06331ca50be18c',1,'Manuel Sanchez','soportesareca@gmail.com'),('prestamo','a2af12d63a5b2f03df06331ca50be18c',2,'Lucas Zapata','soportesareca@gmail.com'),('reparacion','a2af12d63a5b2f03df06331ca50be18c',3,'Jesus Garcia','soportesareca@gmail.com');
+INSERT INTO `usuario` VALUES ('admin','a2af12d63a5b2f03df06331ca50be18c',1,'Francisco Gomez','soportesareca@gmail.com'),('manuel','1f69ab430ddd180a23b1a4052c1836a4',1,'Manuel Sanchez','soportesareca@gmail.com'),('prestamo','a2af12d63a5b2f03df06331ca50be18c',2,'Lucas Zapata','soportesareca@gmail.com'),('reparacion','a2af12d63a5b2f03df06331ca50be18c',3,'Jesus Garcia','soportesareca@gmail.com');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -175,4 +177,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-09-06 21:55:50
+-- Dump completed on 2016-11-13  0:53:07
