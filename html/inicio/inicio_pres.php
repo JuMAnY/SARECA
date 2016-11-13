@@ -39,14 +39,24 @@
 							<th>Serial</th>
 							<th>Tipo</th>
 							<th>Fecha Prestamo</th>
+							<th>Hora Estimada Devolución</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						while ($fila = $res->fetch_object()) {
-							if ($fila->tipo == 1) $tipo = 'VideoBeam';
-							else $tipo = 'Retroproyector';
+							$tipo = ($fila->tipo == 1) ? 'VideoBeam' : 'Retroproyector';
 							list($a,$m,$d) = explode('-',$fila->Fecha_prestamo);
+							list($hh,$mm,) = explode(':',$fila->hora_estimada_devolucion);
+							$r = $hh - 12;
+							if ($r > 0) {
+								$hh = $r;
+								$periodo_meridiano = 'p.m.';
+							} elseif ($r == 0) {
+								$periodo_meridiano = 'p.m.';
+							} else {
+								$periodo_meridiano = 'a.m.';
+							}
 							printf('
 								<tr class="tr_con">
 									<td>%d</td>
@@ -54,6 +64,7 @@
 									<td>%s</td>
 									<td>%s</td>
 									<td>%d-%d-%d</td>
+									<td>%d:%d %s</td>
 								</tr>',
 								$fila->Carnet,
 								$fila->Nombre,
@@ -61,7 +72,10 @@
 								$tipo,
 								$d,
 								$m,
-								$a
+								$a,
+								$hh,
+								$mm,
+								$periodo_meridiano
 							);
 						}
 						?>

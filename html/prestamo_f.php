@@ -95,6 +95,12 @@
 												</div>
 											</div>
 											<div class="form-group">
+												<label for="hora_estimada_devolucion" class="col-lg-2 control-label">Hora Estimada</label>
+												<div class="col-lg-10">
+													<input name="hora_estimada_devolucion" class="form-control" id="hora_estimada_devolucion" placeholder="Hora estimada de devolución" type="time" title="Indique la hora estimada de devolución" required>
+												</div>
+											</div>
+											<div class="form-group">
 												<label for="observacion" class="col-lg-2 control-label">Observación</label>
 												<div class="col-lg-10">
 													<textarea name="observacion" class="form-control" rows="3" id="observacion" title="En caso que desee hacer alguna acotación, use este campo"></textarea>

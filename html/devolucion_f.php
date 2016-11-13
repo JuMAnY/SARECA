@@ -62,15 +62,25 @@
 											<th>Serial</th>
 											<th>Tipo</th>
 											<th>Fecha Prestamo</th>
+											<th>Hora Estimada Devolución</th>
 											<th>Elegir</th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php
 										while ($fila = $res->fetch_object()) {
-											if ($fila->tipo == 1) $tipo = 'VideoBeam';
-											else $tipo = 'Retroproyector';
+											$tipo = ($fila->tipo == 1) ? 'VideoBeam' : 'Retroproyector';
 											list($a,$m,$d) = explode('-',$fila->Fecha_prestamo);
+											list($hh,$mm,) = explode(':',$fila->hora_estimada_devolucion);
+											$r = $hh - 12;
+											if ($r > 0) {
+												$hh = $r;
+												$periodo_meridiano = 'p.m.';
+											} elseif ($r == 0) {
+												$periodo_meridiano = 'p.m.';
+											} else {
+												$periodo_meridiano = 'a.m.';
+											}
 											printf('
 												<tr>
 													<td>%d</td>
@@ -78,6 +88,7 @@
 													<td>%s</td>
 													<td>%s</td>
 													<td>%d-%d-%d</td>
+													<td>%d:%d %s</td>
 													<td data-toggle="tooltip" data-placement="right" title="" data-original-title="Devolver"><a href="#" data-href="../php/devolucion.php?s=%s" data-toggle="modal" data-target="#confirm-action" data-msj="¿Desea devolver el prestamo de: %s?" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span></a></td>
 												</tr>',
 												$fila->Carnet,
@@ -87,6 +98,9 @@
 												$d,
 												$m,
 												$a,
+												$hh,
+												$mm,
+												$periodo_meridiano,
 												$fila->Serial_equipo,
 												$fila->Nombre
 											);
