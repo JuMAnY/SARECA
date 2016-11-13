@@ -1,4 +1,4 @@
-<?php require('../php/sesion/valida_sesion.php');?>
+<?php require('../php/sesion/valida_sesion.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -10,6 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="../css/bootstrap.css">
 		<link rel="stylesheet" href="../css/general.css">
+		<link rel="stylesheet" href="../css/jquery.dataTables.min.css">
 	</head>
 	<body>
 		<div id="wrap">
@@ -23,37 +24,20 @@
 						include('mensaje/mensaje.php');
 					?>
 					<div class="row">
-						<div class="col-lg-6 col-lg-offset-3">
+						<div class="col-lg-12">
 							<div class="page-header">
-								<h1><span class="glyphicon glyphicon-envelope"></span> Cambio de Correo</h1>
-							</div>
-							<div class="well bs-component">
-								<form class="form-horizontal" method='post' action='../php/cambio_email.php'>
-									<fieldset>
-										<legend><span class="glyphicon glyphicon-pencil"> Registro</legend>
-										<div class="form-group">
-											<label for="correo" class="col-lg-2 control-label">Nuevo</label>
-											<div class="col-lg-10">
-												<input name="correo" class="form-control" id="correo" placeholder="Correo" type="email" pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$" title="Debe cumplir el formato: ejemplo@ejemplo.com" required>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-lg-10 col-lg-offset-2">
-												<button type="reset" class="btn btn-default">Cancelar</button>
-												<button type="submit" class="btn btn-primary" id="cambiar">Enviar</button>
-											</div>
-										</div>
-									</fieldset>
-								</form>
+								<h1><span class="glyphicon glyphicon-facetime-video"></span> Equipos Audiovisuales</h1>
 							</div>
 						</div>
 					</div>
+					<?php include '../php/lista_eq_audio.php'; ?>
 				</div>
 			</div>
 			<!-- FIN DEL CONTENEDOR DE LA PAGINA -->
 			<!-- DIV para manejar el footer de manera dinamica -->
 			<div id="push"></div>
 		</div>
+
 		<!-- INICIO DEL PIE DE PAGINA -->
 		<div id="footer">
 			<div class="container">
@@ -66,7 +50,10 @@
 		<!-- FIN DEL PIE DE PAGINA -->
 
 		<script src="../js/jquery-1.11.3.min.js"></script>
+		<script src="../js/jquery.dataTables.min.js"></script>
+		<script src="../js/dataTables.bootstrap.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
 		<script src="../js/config.js"></script>
+		<script src="../js/validadores/valida_conslt_eq_da.js"></script>
 	</body>
 </html>

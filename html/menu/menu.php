@@ -30,6 +30,7 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-facetime-video"></span> AudioVisuales<span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="equipo_audiovisual_f.php">Registro Equipo AudioVisual</a></li>
+									<li><a href="consulta_audiovisuales_f.php">Consulta Equipo AudioVisual</a></li>
 									<li><a href="usuario_prestamo_f.php">Registrar Usuario Prestamo</a></li>
 									<li class="divider"></li>
 									<li><a href="prestamo_f.php">Registrar Prestamo</a></li>
