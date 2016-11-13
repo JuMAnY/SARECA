@@ -48,6 +48,37 @@
 											</div>
 										</div>
 										<div class="form-group">
+											<label for="numero" class="col-lg-2 control-label">Número</label>
+											<div class="col-lg-10">
+												<input name="numero" class="form-control" id="numero" placeholder="Número del equipo" type="number" title="Debe ingresar el número del equipo" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="rbn" class="col-lg-2 control-label">RBN</label>
+											<div class="col-lg-10">
+												<input name="rbn" class="form-control" id="rbn" placeholder="Codigo de Registro de Bien Nacional" type="text" title="Debe ingresar el RBN del equipo" pattern="[a-zA-Z0-9-]*" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="marca" class="col-lg-2 control-label">Marca</label>
+											<div class="col-lg-10">
+												<input name="marca" class="form-control" id="marca" placeholder="Marca del equipo" type="text" title="Debe ingresar la marca del equipo" pattern="[a-zA-Z0-9]*" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="modelo" class="col-lg-2 control-label">Modelo</label>
+											<div class="col-lg-10">
+												<input name="modelo" class="form-control" id="modelo" placeholder="Modelo del equipo" type="text" title="Debe ingresar el modelo del equipo" pattern="[a-zA-Z0-9-]*" required>
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="inf_adic" class="col-lg-2 control-label">Inf. Adicional</label>
+											<div class="col-lg-10">
+												<textarea name="inf_adic" class="form-control" rows="3" id="inf_adic" title="En caso que desee hacer alguna acotación, use este campo"></textarea>
+												<span class="help-block">En caso que desee hacer alguna acotación, use este campo.</span>
+											</div>
+										</div>
+										<div class="form-group">
 											<div class="col-lg-10 col-lg-offset-2">
 												<button type="reset" class="btn btn-default">Cancelar</button>
 												<button type="submit" class="btn btn-primary">Enviar</button>

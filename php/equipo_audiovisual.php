@@ -4,8 +4,18 @@
 	
 	$tipo = $_POST['tipo'];
 	$serial = $_POST['Serial'];
+	$numero = $_POST['numero'];
+	$rbn = $_POST['rbn'];
+	$marca = $_POST['marca'];
+	$modelo = $_POST['modelo'];
 	
-	$sql = "INSERT INTO equipo_audiovisual (Serial, tipo, Estado) VALUES ('$serial','$tipo',1)";
+	if (isset($_POST['inf_adic'])) {
+		$inf_adic = $_POST['inf_adic'];
+		$sql = "INSERT INTO equipo_audiovisual (Serial, tipo, numero, rbn, modelo, marca, inf_adic, Estado) VALUES ('$serial','$tipo','$numero','$rbn','$marca','$modelo','$inf_adic',1)";
+	} else {
+		$sql = "INSERT INTO equipo_audiovisual (Serial, tipo, numero, rbn, modelo, marca, Estado) VALUES ('$serial','$tipo','$numero','$rbn','$marca','$modelo',1)";
+	}
+
 	$res = $conectar->query($sql);
 	
 	if(!$res){

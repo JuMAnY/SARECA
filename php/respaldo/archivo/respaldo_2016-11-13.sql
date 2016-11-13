@@ -25,6 +25,11 @@ DROP TABLE IF EXISTS `equipo_audiovisual`;
 CREATE TABLE `equipo_audiovisual` (
   `Serial` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `tipo` int(1) NOT NULL,
+  `numero` tinyint(4) NOT NULL,
+  `rbn` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `modelo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `marca` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `inf_adic` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Estado` int(1) NOT NULL,
   PRIMARY KEY (`Serial`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -36,7 +41,7 @@ CREATE TABLE `equipo_audiovisual` (
 
 LOCK TABLES `equipo_audiovisual` WRITE;
 /*!40000 ALTER TABLE `equipo_audiovisual` DISABLE KEYS */;
-INSERT INTO `equipo_audiovisual` VALUES ('02e5rt',1,1),('40fg9e',2,2),('6T5r',1,3);
+INSERT INTO `equipo_audiovisual` VALUES ('02e5rt',1,0,'','','','',1),('40fg9e',2,0,'','','','',2),('6T5r',1,0,'','','','',3),('tr432',2,1,'02-08-2016K76','hp','hpm64','DonaciÃ³n',1),('uyt65',1,1,'02-08-2016G6','epson','xl54','',1);
 /*!40000 ALTER TABLE `equipo_audiovisual` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,4 +182,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-13  0:53:07
+-- Dump completed on 2016-11-13 13:43:14
