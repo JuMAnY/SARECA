@@ -10,7 +10,7 @@
 		$conectar->close();
 		exit();
 	}else{
-		$sql = "SELECT Carnet FROM persona";
+		$sql = "SELECT Cedula FROM persona";
 		$res_per = $conectar->query($sql);
 	
 		if(!$res_per){
@@ -62,22 +62,16 @@
 										<fieldset>
 											<legend><span class="glyphicon glyphicon-pencil"> Registro</legend>
 											<div class="form-group">
-												<label for="select" class="col-lg-2 control-label">Carnet</label>
+												<label for="select" class="col-lg-2 control-label">Cédula</label>
 												<div class="col-lg-10">
-													<select name="carnet" class="form-control" id="carnet" title="Debe elegir el número de carnet" required>
+													<select name="cedula" class="form-control" id="cedula" title="Ingrese la cédula del prestamista" required>
 														<option></option>
 														<?php
 														while ($fila_per = $res_per->fetch_object())
-															echo '<option value="'.$fila_per->Carnet.'">'.$fila_per->Carnet.'</option>';
+															echo '<option value="'.$fila_per->Cedula.'">'.$fila_per->Cedula.'</option>';
 														$res_per->free();
 														?>
 													</select>
-												</div>
-											</div>
-											<div class="form-group">
-												<label for="carrera" class="col-lg-2 control-label">Carrera</label>
-												<div class="col-lg-10">
-													<input name="carrera" class="form-control" id="carrera" placeholder="Carrera" type="text" title="Debe ingresar la carrera a la que pertenece" pattern="[a-zA-Z0-9 ]*" required>
 												</div>
 											</div>
 											<div class="form-group">

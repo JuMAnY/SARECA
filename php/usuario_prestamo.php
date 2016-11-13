@@ -2,12 +2,11 @@
 	require('sesion/valida_sesion.php');
 	require('conexion/conexion.php');
 	
-	$carnet = $_POST['carnet'];
 	$cedula = $_POST['cedula'];
 	$nombre = $_POST['nombre'];
-	$cargo = $_POST['cargo'];
+	$carrera = $_POST['carrera'];
 	
-	$sql = "INSERT INTO persona (Carnet, Cedula, Nombre, Cargo) VALUES ('$carnet','$cedula','$nombre','$cargo')";
+	$sql = "INSERT INTO persona (Cedula, Nombre, carrera) VALUES ('$cedula','$nombre','$carrera')";
 	$res = $conectar->query($sql);
 	
 	if(!$res){

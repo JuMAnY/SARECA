@@ -5,7 +5,7 @@
 	$sql = "SELECT *
 			FROM equipo_audiovisual
 			JOIN prestamo ON equipo_audiovisual.Serial = prestamo.Serial_equipo
-			JOIN persona ON prestamo.Carnet = persona.Carnet
+			JOIN persona ON prestamo.Cedula = persona.Cedula
 			WHERE equipo_audiovisual.Estado = 2
 			AND prestamo.Estado = 2";
 	$res = $conectar->query($sql);
@@ -57,7 +57,7 @@
 								<table class="table table-striped table-hover">
 									<thead>
 										<tr>
-											<th>Carnet</th>
+											<th>Cédula</th>
 											<th>Nombre</th>
 											<th>Serial</th>
 											<th>Tipo</th>
@@ -88,10 +88,10 @@
 													<td>%s</td>
 													<td>%s</td>
 													<td>%d-%d-%d</td>
-													<td>%d:%d %s</td>
-													<td data-toggle="tooltip" data-placement="right" title="" data-original-title="Devolver"><a href="#" data-href="../php/devolucion.php?s=%s" data-toggle="modal" data-target="#confirm-action" data-msj="¿Desea devolver el prestamo de: %s?" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span></a></td>
+													<td>%s:%s %s</td>
+													<td><a href="proceso_devolucion_f.php?s=%s" data-toggle="tooltip" data-placement="right" data-original-title="Devolver" class="btn btn-primary"><span class="glyphicon glyphicon-share-alt"></span></a></td>
 												</tr>',
-												$fila->Carnet,
+												$fila->Cedula,
 												$fila->Nombre,
 												$fila->Serial_equipo,
 												$tipo,
@@ -101,8 +101,7 @@
 												$hh,
 												$mm,
 												$periodo_meridiano,
-												$fila->Serial_equipo,
-												$fila->Nombre
+												$fila->Serial_equipo
 											);
 										}
 										?>

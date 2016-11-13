@@ -32,12 +32,6 @@
 									<fieldset>
 										<legend><span class="glyphicon glyphicon-pencil"> Registro</legend>
 										<div class="form-group">
-											<label for="carnet" class="col-lg-2 control-label">Carnet</label>
-											<div class="col-lg-10">
-												<input name="carnet" class="form-control" id="carnet" placeholder="Carnet" type="number" title="Debe ingresar el número de carnet" required>
-											</div>
-										</div>
-										<div class="form-group">
 											<label for="cedula" class="col-lg-2 control-label">Cédula</label>
 											<div class="col-lg-10">
 												<input name="cedula"class="form-control" id="cedula" placeholder="Cédula" type="number" title="Debe ingresar el número de cédula" required>
@@ -50,9 +44,9 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label for="cargo" class="col-lg-2 control-label">Cargo</label>
+											<label for="cargo" class="col-lg-2 control-label">Carrera</label>
 											<div class="col-lg-10">
-												<input name="cargo" class="form-control" id="cargo" placeholder="Cargo" type="text" title="Debe ingresar el cargo que ocupa" pattern="[a-zA-Z ]*" required>
+												<input name="carrera" class="form-control" id="carrera" placeholder="Carrera" type="text" title="Ingrese la carrera de la cual depende el prestamista" pattern="[a-zA-Z .]*" required>
 											</div>
 										</div>
 										<div class="form-group">
