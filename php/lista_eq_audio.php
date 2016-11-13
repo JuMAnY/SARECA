@@ -31,6 +31,11 @@
 						<tr>
 							<th>Serial</th>
 							<th>Tipo</th>
+							<th>Número</th>
+							<th>RBN</th>
+							<th>Marca</th>
+							<th>Modelo</th>
+							<th>Inf. Adicional</th>
 							<th>Acción</th>
 						</tr>
 					</thead>
@@ -42,10 +47,20 @@
 							<tr>
 								<td>%s</td>
 								<td>%s</td>
+								<td>%d</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
 								<td><a href="../php/estado_audiovisual.php?s=%s&e=%d" class="btn btn-primary">Inactivar</a></td>
 							</tr>',
 							$fila->Serial,
 							$tipo,
+							$fila->numero,
+							$fila->rbn,
+							$fila->marca,
+							$fila->modelo,
+							$fila->inf_adic,
 							$fila->Serial,
 							$fila->Estado
 						);
@@ -91,6 +106,11 @@
 						<tr>
 							<th>Serial</th>
 							<th>Tipo</th>
+							<th>Número</th>
+							<th>RBN</th>
+							<th>Marca</th>
+							<th>Modelo</th>
+							<th>Inf. Adicional</th>
 							<th>Acción</th>
 						</tr>
 					</thead>
@@ -102,10 +122,20 @@
 							<tr>
 								<td>%s</td>
 								<td>%s</td>
+								<td>%d</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
 								<td><a href="../php/estado_audiovisual.php?s=%s&e=%d" class="btn btn-primary">Activar</a></td>
 							</tr>',
 							$fila->Serial,
 							$tipo,
+							$fila->numero,
+							$fila->rbn,
+							$fila->marca,
+							$fila->modelo,
+							$fila->inf_adic,
 							$fila->Serial,
 							$fila->Estado
 						);
@@ -151,7 +181,11 @@
 						<tr>
 							<th>Serial</th>
 							<th>Tipo</th>
-							<th>Acción</th>
+							<th>Número</th>
+							<th>RBN</th>
+							<th>Marca</th>
+							<th>Modelo</th>
+							<th>Inf. Adicional</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -163,10 +197,18 @@
 								<td>%s</td>
 								<td>%s</td>
 								<td>%d</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
+								<td>%s</td>
 							</tr>',
 							$fila->Serial,
 							$tipo,
-							$fila->Estado
+							$fila->numero,
+							$fila->rbn,
+							$fila->marca,
+							$fila->modelo,
+							$fila->inf_adic
 						);
 					}
 					?>
