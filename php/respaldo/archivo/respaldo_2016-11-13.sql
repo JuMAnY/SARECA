@@ -85,6 +85,7 @@ CREATE TABLE `prestamo` (
   `Fecha_prestamo` date NOT NULL,
   `hora_prestamo` time NOT NULL,
   `hora_estimada_devolucion` time NOT NULL,
+  `destino` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Id_usuario_prestador` varchar(50) CHARACTER SET latin1 NOT NULL,
   `Carnet` int(9) NOT NULL,
   `carrera` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -97,7 +98,7 @@ CREATE TABLE `prestamo` (
   CONSTRAINT `prestamo_ibfk_3` FOREIGN KEY (`Id_usuario_prestador`) REFERENCES `usuario` (`Id`) ON UPDATE CASCADE,
   CONSTRAINT `prestamo_ibfk_4` FOREIGN KEY (`Carnet`) REFERENCES `persona` (`Carnet`) ON UPDATE CASCADE,
   CONSTRAINT `prestamo_ibfk_5` FOREIGN KEY (`Serial_equipo`) REFERENCES `equipo_audiovisual` (`Serial`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +107,7 @@ CREATE TABLE `prestamo` (
 
 LOCK TABLES `prestamo` WRITE;
 /*!40000 ALTER TABLE `prestamo` DISABLE KEYS */;
-INSERT INTO `prestamo` VALUES (1,'40fg9e','2015-10-07','12:15:13','00:00:00','reparacion',234234,'informatica',1,''),(2,'02e5rt','2015-10-07','06:31:19','00:00:00','reparacion',10300601,'informatica',1,''),(3,'02e5rt','2015-10-07','13:18:31','00:00:00','reparacion',10300601,'informatica',1,''),(4,'40fg9e','2015-10-07','14:06:38','00:00:00','reparacion',5546456,'informatica',1,''),(5,'02e5rt','2015-10-07','14:04:56','00:00:00','admin',10300601,'informatica',1,''),(6,'02e5rt','2015-10-08','18:36:13','00:00:00','admin',10300601,'informatica',1,''),(7,'40fg9e','2015-10-08','10:43:05','00:00:00','admin',10300601,'informatica',2,''),(8,'02e5rt','2015-10-15','07:45:07','00:00:00','admin',10300601,'informatica',1,''),(9,'02e5rt','2016-09-06','11:40:20','00:00:00','manuel',234234,'informatica',1,''),(10,'02e5rt','2016-10-09','22:22:40','00:00:00','admin',234234,'Informatica',1,''),(11,'02e5rt','2016-11-13','14:40:06','15:33:00','admin',234234,'lol',1,''),(12,'02e5rt','2016-11-13','15:20:05','17:40:00','admin',234234,'lol',1,'lol');
+INSERT INTO `prestamo` VALUES (1,'40fg9e','2015-10-07','12:15:13','00:00:00','','reparacion',234234,'informatica',1,''),(2,'02e5rt','2015-10-07','06:31:19','00:00:00','','reparacion',10300601,'informatica',1,''),(3,'02e5rt','2015-10-07','13:18:31','00:00:00','','reparacion',10300601,'informatica',1,''),(4,'40fg9e','2015-10-07','14:06:38','00:00:00','','reparacion',5546456,'informatica',1,''),(5,'02e5rt','2015-10-07','14:04:56','00:00:00','','admin',10300601,'informatica',1,''),(6,'02e5rt','2015-10-08','18:36:13','00:00:00','','admin',10300601,'informatica',1,''),(7,'40fg9e','2015-10-08','10:43:05','00:00:00','','admin',10300601,'informatica',2,''),(8,'02e5rt','2015-10-15','07:45:07','00:00:00','','admin',10300601,'informatica',1,''),(9,'02e5rt','2016-09-06','11:40:20','00:00:00','','manuel',234234,'informatica',1,''),(10,'02e5rt','2016-10-09','22:22:40','00:00:00','','admin',234234,'Informatica',1,''),(11,'02e5rt','2016-11-13','14:40:06','15:33:00','','admin',234234,'lol',1,''),(12,'02e5rt','2016-11-13','15:20:05','17:40:00','','admin',234234,'lol',1,'lol'),(13,'02e5rt','2016-11-13','15:43:37','17:45:00','Biblioteca','admin',234234,'lol',1,'prueba');
 /*!40000 ALTER TABLE `prestamo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,4 +184,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-13 15:25:03
+-- Dump completed on 2016-11-13 15:45:36

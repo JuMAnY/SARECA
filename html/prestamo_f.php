@@ -77,7 +77,7 @@
 											<div class="form-group">
 												<label for="carrera" class="col-lg-2 control-label">Carrera</label>
 												<div class="col-lg-10">
-													<input name="carrera" class="form-control" id="departamento" placeholder="Carrera" type="text" title="Debe ingresar la carrera a la que pertenece" pattern="[a-zA-Z0-9 ]*" required>
+													<input name="carrera" class="form-control" id="carrera" placeholder="Carrera" type="text" title="Debe ingresar la carrera a la que pertenece" pattern="[a-zA-Z0-9 ]*" required>
 												</div>
 											</div>
 											<div class="form-group">
@@ -98,6 +98,12 @@
 												<label for="hora_estimada_devolucion" class="col-lg-2 control-label">Hora Estimada</label>
 												<div class="col-lg-10">
 													<input name="hora_estimada_devolucion" class="form-control" id="hora_estimada_devolucion" placeholder="Hora estimada de devolución" type="time" title="Indique la hora estimada de devolución" required>
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="destino" class="col-lg-2 control-label">Destino</label>
+												<div class="col-lg-10">
+													<input name="destino" class="form-control" id="destino" placeholder="Lugar donde se usara el equipo" type="text" title="Indique el lugar donde será usado el equipo" required>
 												</div>
 											</div>
 											<div class="form-group">

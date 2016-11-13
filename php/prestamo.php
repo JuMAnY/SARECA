@@ -6,13 +6,14 @@
 	$carrera = $_POST['carrera'];
 	$serial = $_POST['Serial_equipo'];
 	$hora_estimada = $_POST['hora_estimada_devolucion'];
+	$destino = $_POST['destino'];
 	$fe_pre = date('Y-m-d');
 	$id_user = $_SESSION['id'];
 	if (isset($_POST['observacion'])) {
 		$observacion = $_POST['observacion'];
-		$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, hora_estimada_devolucion, Id_usuario_prestador, Carnet, carrera, Estado, observacion_prestamo) VALUES ('$serial','$fe_pre',curTime(),'$hora_estimada','$id_user','$carnet','$carrera',2,'$observacion')";
+		$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, hora_estimada_devolucion, destino, Id_usuario_prestador, Carnet, carrera, Estado, observacion_prestamo) VALUES ('$serial','$fe_pre',curTime(),'$hora_estimada','$destino','$id_user','$carnet','$carrera',2,'$observacion')";
 	} else {
-		$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, hora_estimada_devolucion, Id_usuario_prestador, Carnet, carrera, Estado) VALUES ('$serial','$fe_pre',curTime(),'$hora_estimada','$id_user','$carnet','$carrera',2)";
+		$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, hora_estimada_devolucion, destino, Id_usuario_prestador, Carnet, carrera, Estado) VALUES ('$serial','$fe_pre',curTime(),'$hora_estimada','$destino','$id_user','$carnet','$carrera',2)";
 	}
 
 	$res = $conectar->query($sql);
