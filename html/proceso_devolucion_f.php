@@ -4,21 +4,34 @@
 
 	$serial = $_GET['s'];
 	
-	$sql = "SELECT reparacion.*, usuario.Nombre
-			FROM reparacion
-			JOIN usuario ON usuario.Id = reparacion.responsable
+	$sql = "SELECT persona.Nombre, persona.Cedula, carrera, Fecha_prestamo, hora_prestamo, destino, usuario.Nombre usr, tipo, Serial_equipo, numero, marca, modelo, observacion_prestamo
+			FROM prestamo
+			JOIN persona ON persona.Cedula = prestamo.Cedula
+			JOIN equipo_audiovisual ON equipo_audiovisual.Serial = prestamo.Serial_equipo
+			JOIN usuario ON usuario.Id = prestamo.Id_usuario_prestador
 			WHERE Serial_equipo = '$serial'
-			AND Estado = 1";
+			AND prestamo.Estado = 2";
 	$res = $conectar->query($sql);
 	
 	if(!$res){
-		echo "<h1>ERROR</h1>";
+		echo "<h1>ERROR: </h1>".$conectar->error;
 		$conectar->close();
 		exit();
 	}
 
 	$fila = $res->fetch_object();
-	list($a,$m,$d) = explode('-',$fila->Fecha_entrada);
+	$tipo = ($fila->tipo == 1) ? 'VideoBeam' : 'Retroproyector';
+	list($a,$m,$d) = explode('-',$fila->Fecha_prestamo);
+	list($hh,$mm,) = explode(':',$fila->hora_prestamo);
+	$r = $hh - 12;
+	if ($r > 0) {
+		$hh = $r;
+		$periodo_meridiano = 'p.m.';
+	} elseif ($r == 0) {
+		$periodo_meridiano = 'p.m.';
+	} else {
+		$periodo_meridiano = 'a.m.';
+	}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -53,74 +66,74 @@
 										<div class="form-group">
 											<label for="nombre" class="col-lg-2 control-label">Nombre</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="nombre" type="text" value="<?=$fila->Nucleo?>" disabled="">
+												<input class="form-control" id="nombre" type="text" value="<?=$fila->Nombre?>" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="cedula" class="col-lg-2 control-label">Cédula</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="cedula" type="text" value="<?=$fila->Serial_equipo?>" disabled="">
+												<input class="form-control" id="cedula" type="text" value="<?=$fila->Cedula?>" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="carrera" class="col-lg-2 control-label">Carrera</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="carrera" type="text" value="<?=$fila->Departamento?>" disabled="">
+												<input class="form-control" id="carrera" type="text" value="<?=$fila->carrera?>" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="fecha" class="col-lg-2 control-label">Fecha Hora</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="fecha" type="text" value="<?=$d.'-'.$m.'-'.$a?>" title="Fecha en la que ingreso al taller el equipo" disabled="">
+												<input class="form-control" id="fecha" type="text" value="<?=$d.'-'.$m.'-'.$a.' '.$hh.':'.$mm.' '.$periodo_meridiano?>" title="Fecha en la que se realizó el prestamo" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="destino" class="col-lg-2 control-label">Destino</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="destino" type="text" value="<?=$fila->Nombre?>" title="Persona que registró el equipo ó el encargado de repararlo" disabled="">
+												<input class="form-control" id="destino" type="text" value="<?=$fila->destino?>" title="Lugar donde se uso el equipo" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="operador" class="col-lg-2 control-label">Operador</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="operador" type="text" value="<?=$fila->Nombre?>" title="Persona que registró el equipo ó el encargado de repararlo" disabled="">
+												<input class="form-control" id="operador" type="text" value="<?=$fila->usr?>" title="Persona que realizó el prestamo" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="tipo" class="col-lg-2 control-label">Tipo</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="tipo" type="text" value="<?=$fila->Nombre?>" title="Persona que registró el equipo ó el encargado de repararlo" disabled="">
+												<input class="form-control" id="tipo" type="text" value="<?=$tipo?>" title="Tipo de equipo" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="serial" class="col-lg-2 control-label">Serial</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="serial" type="text" value="<?=$fila->Nombre?>" title="Persona que registró el equipo ó el encargado de repararlo" disabled="">
+												<input class="form-control" id="serial" type="text" value="<?=$fila->Serial_equipo?>" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="numero" class="col-lg-2 control-label">Número</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="numero" type="text" value="<?=$fila->Nombre?>" title="Persona que registró el equipo ó el encargado de repararlo" disabled="">
+												<input class="form-control" id="numero" type="text" value="<?=$fila->numero?>" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="marca" class="col-lg-2 control-label">Marca</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="marca" type="text" value="<?=$fila->Nombre?>" title="Persona que registró el equipo ó el encargado de repararlo" disabled="">
+												<input class="form-control" id="marca" type="text" value="<?=$fila->marca?>" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="modelo" class="col-lg-2 control-label">Modelo</label>
 											<div class="col-lg-10">
-												<input class="form-control" id="modelo" type="text" value="<?=$fila->Nombre?>" title="Persona que registró el equipo ó el encargado de repararlo" disabled="">
+												<input class="form-control" id="modelo" type="text" value="<?=$fila->modelo?>" disabled="">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="observacion" class="col-lg-2 control-label">Observación</label>
 											<div class="col-lg-10">
-												<textarea class="form-control" rows="3" id="observacion" disabled=""><?=$fila->observacion?></textarea>
-												<span class="help-block">Observaciones sobre el equipo como: tipo, componentes, etc.</span>
+												<textarea class="form-control" rows="3" id="observacion" disabled=""><?=$fila->observacion_prestamo?></textarea>
+												<span class="help-block">Observaciones sobre este prestamo.</span>
 											</div>
 										</div>
 									</fieldset>
@@ -135,6 +148,7 @@
 										<div class="form-group">
 											<label for="observacion" class="col-lg-2 control-label">Observación</label>
 											<div class="col-lg-10">
+												<input type="hidden" name="serial" value="<?=$fila->Serial_equipo?>">
 												<textarea name="observacion" class="form-control" rows="3" id="observacion" title="En caso que desee hacer alguna acotación, use este campo"></textarea>
 												<span class="help-block">En caso que desee hacer alguna acotación, use este campo.</span>
 											</div>

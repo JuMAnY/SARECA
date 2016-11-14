@@ -44,9 +44,9 @@
 											</div>
 										</div>
 										<div class="form-group">
-											<label for="cargo" class="col-lg-2 control-label">Carrera</label>
+											<label for="cargo" class="col-lg-2 control-label">Cargo</label>
 											<div class="col-lg-10">
-												<input name="carrera" class="form-control" id="carrera" placeholder="Carrera" type="text" title="Ingrese la carrera de la cual depende el prestamista" pattern="[a-zA-Z .]*" required>
+												<input name="cargo" class="form-control" id="cargo" placeholder="Cargo" type="text" title="Ingrese el cargo del prestamista" pattern="[a-zA-Z ]*" required>
 											</div>
 										</div>
 										<div class="form-group">

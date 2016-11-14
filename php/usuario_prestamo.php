@@ -4,14 +4,14 @@
 	
 	$cedula = $_POST['cedula'];
 	$nombre = $_POST['nombre'];
-	$carrera = $_POST['carrera'];
+	$cargo = $_POST['cargo'];
 	
-	$sql = "INSERT INTO persona (Cedula, Nombre, carrera) VALUES ('$cedula','$nombre','$carrera')";
+	$sql = "INSERT INTO persona (Cedula, Nombre, cargo) VALUES ('$cedula','$nombre','$cargo')";
 	$res = $conectar->query($sql);
 	
 	if(!$res){
 		if ($conectar->errno == 1062) {
-			header('Location: ../html/usuario_prestamo_f.php?m=2&e=El el usuario de carnet "'.$carnet.'" esta registrado.');
+			header('Location: ../html/usuario_prestamo_f.php?m=2&e=El el usuario de cédula "'.$cedula.'" esta registrado.');
 			$conectar->close();
 			exit();
 		}else{
