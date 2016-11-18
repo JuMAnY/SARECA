@@ -123,6 +123,7 @@
 										<div class="form-group">
 											<div class="col-lg-10 col-lg-offset-2">
 												<input name="serial" value="<?=$fila->Serial_equipo?>" type="hidden">
+												<input name="fecha_entrada" value="<?=$fila->Fecha_entrada?>" type="hidden">
 												<button type="reset" class="btn btn-default">Cancelar</button>
 												<button type="submit" class="btn btn-primary">Enviar</button>
 											</div>

@@ -6,11 +6,13 @@
 	$observacion_r = $_POST['observacion_r'];
 	$fecha_salida = date('Y-m-d');
 	$serial = $_POST['serial'];
+	$fecha_entrada = $_POST['fecha_entrada'];
 	$responsable = $_SESSION['id'];
 	
 	$sql = "UPDATE reparacion
 			SET Estado = 2, resultado = '$resultado', observacion_reaparacion = '$observacion_r', Fecha_salida = '$fecha_salida', responsable = '$responsable'
 			WHERE Serial_equipo = '$serial'
+			AND Fecha_entrada = '$fecha_entrada'
 			AND Estado = 1";
 	$res = $conectar->query($sql);
 	
