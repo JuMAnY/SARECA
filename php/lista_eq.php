@@ -4,7 +4,8 @@
 	$sql = "SELECT reparacion.*, usuario.Nombre
 			FROM reparacion
 			JOIN usuario ON usuario.Id = reparacion.responsable
-			WHERE resultado = 2";
+			WHERE Estado = 2
+			AND resultado = 2";
 	$res = $conectar->query($sql);
 	
 	if(!$res){
@@ -86,7 +87,8 @@
 	$sql = "SELECT reparacion.*, usuario.Nombre
 			FROM reparacion
 			JOIN usuario ON usuario.Id = reparacion.responsable
-			WHERE resultado = 1";
+			WHERE Estado = 2
+			AND resultado = 1";
 	$res = $conectar->query($sql);
 	
 	if(!$res){

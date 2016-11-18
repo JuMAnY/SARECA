@@ -25,6 +25,11 @@ DROP TABLE IF EXISTS `equipo_audiovisual`;
 CREATE TABLE `equipo_audiovisual` (
   `Serial` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `tipo` int(1) NOT NULL,
+  `numero` tinyint(4) NOT NULL,
+  `rbn` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `modelo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `marca` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `inf_adic` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Estado` int(1) NOT NULL,
   PRIMARY KEY (`Serial`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -36,7 +41,7 @@ CREATE TABLE `equipo_audiovisual` (
 
 LOCK TABLES `equipo_audiovisual` WRITE;
 /*!40000 ALTER TABLE `equipo_audiovisual` DISABLE KEYS */;
-INSERT INTO `equipo_audiovisual` VALUES ('02e5rt',1,2),('40fg9e',2,2);
+INSERT INTO `equipo_audiovisual` VALUES ('02e5rt',1,0,'','','','',2),('40fg9e',2,0,'','','','',1),('6T5r',1,0,'','','','',3),('tr432',2,1,'02-08-2016K76','hp','hpm64','DonaciÃ³n',3),('uyt65',1,1,'02-08-2016G6','epson','xl54','',1);
 /*!40000 ALTER TABLE `equipo_audiovisual` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -48,12 +53,10 @@ DROP TABLE IF EXISTS `persona`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `persona` (
-  `Carnet` int(9) NOT NULL,
   `Cedula` int(8) NOT NULL,
   `Nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `Cargo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`Carnet`),
-  KEY `Cedula` (`Cedula`)
+  `cargo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`Cedula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -63,7 +66,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (234234,8706893,'rwerwerwer','werwerwer'),(5546456,2147483647,'ljklj','ljlj'),(10300601,18191839,'Pedro Perez','Estudiante');
+INSERT INTO `persona` VALUES (8706893,'rwerwerwer','werwerwer'),(18191839,'Pedro Perez','Estudiante'),(20302004,'Kristian Rondon','Ing. Informatica'),(20573343,'Jose Bacca','Profesor'),(2147483647,'ljklj','ljlj');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,19 +82,26 @@ CREATE TABLE `prestamo` (
   `Serial_equipo` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha_prestamo` date NOT NULL,
   `hora_prestamo` time NOT NULL,
-  `Id_usuario` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `Carnet` int(9) NOT NULL,
-  `carrera` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `hora_estimada_devolucion` time NOT NULL,
+  `destino` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `Id_usuario_prestador` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `Cedula` int(8) NOT NULL,
+  `carrera` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Estado` int(1) NOT NULL,
-  `observacion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `observacion_prestamo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_devolucion` date NOT NULL,
+  `hora_devolucion` time NOT NULL,
+  `id_usuario_receptor` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `observacion_devolucion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`Id`),
-  KEY `Id_usuario` (`Id_usuario`),
-  KEY `Carnet` (`Carnet`),
+  KEY `Id_usuario` (`Id_usuario_prestador`),
   KEY `Serial_equipo` (`Serial_equipo`),
-  CONSTRAINT `prestamo_ibfk_3` FOREIGN KEY (`Id_usuario`) REFERENCES `usuario` (`Id`) ON UPDATE CASCADE,
-  CONSTRAINT `prestamo_ibfk_4` FOREIGN KEY (`Carnet`) REFERENCES `persona` (`Carnet`) ON UPDATE CASCADE,
-  CONSTRAINT `prestamo_ibfk_5` FOREIGN KEY (`Serial_equipo`) REFERENCES `equipo_audiovisual` (`Serial`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  KEY `Cedula` (`Cedula`),
+  KEY `id_usuario_receptor` (`id_usuario_receptor`),
+  CONSTRAINT `prestamo_ibfk_3` FOREIGN KEY (`Id_usuario_prestador`) REFERENCES `usuario` (`Id`) ON UPDATE CASCADE,
+  CONSTRAINT `prestamo_ibfk_5` FOREIGN KEY (`Serial_equipo`) REFERENCES `equipo_audiovisual` (`Serial`) ON UPDATE CASCADE,
+  CONSTRAINT `prestamo_ibfk_6` FOREIGN KEY (`Cedula`) REFERENCES `persona` (`Cedula`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +110,7 @@ CREATE TABLE `prestamo` (
 
 LOCK TABLES `prestamo` WRITE;
 /*!40000 ALTER TABLE `prestamo` DISABLE KEYS */;
-INSERT INTO `prestamo` VALUES (1,'40fg9e','2015-10-07','12:15:13','reparacion',234234,'informatica',1,''),(2,'02e5rt','2015-10-07','06:31:19','reparacion',10300601,'informatica',1,''),(3,'02e5rt','2015-10-07','13:18:31','reparacion',10300601,'informatica',1,''),(4,'40fg9e','2015-10-07','14:06:38','reparacion',5546456,'informatica',1,''),(5,'02e5rt','2015-10-07','14:04:56','admin',10300601,'informatica',1,''),(6,'02e5rt','2015-10-08','18:36:13','admin',10300601,'informatica',1,''),(7,'40fg9e','2015-10-08','10:43:05','admin',10300601,'informatica',2,''),(8,'02e5rt','2015-10-15','07:45:07','admin',10300601,'informatica',1,''),(9,'02e5rt','2016-09-06','11:40:20','manuel',234234,'informatica',1,''),(10,'02e5rt','2016-10-09','22:22:40','admin',234234,'Informatica',2,'');
+INSERT INTO `prestamo` VALUES (1,'02e5rt','2016-11-13','18:05:07','19:00:00','Salon A','admin',18191839,'',2,'Prueba con cambios','0000-00-00','00:00:00','',''),(2,'40fg9e','2016-11-13','18:14:39','18:00:00','Biblioteca','admin',20302004,'',1,'Prueba 2','2016-11-13','20:10:30','admin','prueba devoluciÃ³n completa'),(3,'uyt65','2016-11-13','19:36:12','20:30:00','Salon A4','admin',20573343,'Contaduria',1,'Esta en buen estado el equipo','2016-11-13','20:17:03','admin','');
 /*!40000 ALTER TABLE `prestamo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,21 +124,21 @@ DROP TABLE IF EXISTS `reparacion`;
 CREATE TABLE `reparacion` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Serial_equipo` varchar(11) COLLATE utf8_spanish_ci NOT NULL,
+  `Fecha_entrada` date NOT NULL,
   `Nucleo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Departamento` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `falla` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Estado` int(1) NOT NULL,
   `observacion` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `Fecha_entrada` date NOT NULL,
   `resultado` int(1) NOT NULL,
   `observacion_reaparacion` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
   `Fecha_salida` date NOT NULL,
   `responsable` varchar(50) CHARACTER SET latin1 NOT NULL,
   PRIMARY KEY (`Id`),
-  KEY `Serial_equipo` (`Serial_equipo`),
+  UNIQUE KEY `Serial_equipo` (`Serial_equipo`,`Fecha_entrada`),
   KEY `responsable` (`responsable`),
   CONSTRAINT `reparacion_ibfk_1` FOREIGN KEY (`responsable`) REFERENCES `usuario` (`Id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +147,7 @@ CREATE TABLE `reparacion` (
 
 LOCK TABLES `reparacion` WRITE;
 /*!40000 ALTER TABLE `reparacion` DISABLE KEYS */;
-INSERT INTO `reparacion` VALUES (1,'e33ee3','Ejido','Informatica','Se robaron la memoria RAM',1,'Creo que fue Juan','2015-10-07',2,'Se devolvio la memoria','2015-10-08','reparacion'),(2,'dsfsgdfg','Ejido','Laboratorio 1','Se reinicia',2,'CPU i7','2016-09-06',2,'El problema lo causaba alta temperatura a razÃ³n d','2016-09-06','manuel');
+INSERT INTO `reparacion` VALUES (2,'b2','2016-11-18','Ejido','ddd','d',2,'d',1,'jkhkj','2016-11-18','admin'),(3,'c3','2016-11-18','Ejido','gg','g',1,'g',1,'','0000-00-00','admin'),(5,'a1','2016-11-18','Ejido','lkjsdfaslkajdlad','asjdlasd',1,'lkajdlasd',1,'','0000-00-00','admin');
 /*!40000 ALTER TABLE `reparacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,4 +187,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-03  3:00:33
+-- Dump completed on 2016-11-18  1:54:55
