@@ -37,7 +37,7 @@
 							<th>Nucleo</th>
 							<th>Departamento</th>
 							<th>Falla</th>
-							<th>Observacion</th>
+							<th>Observación de reparación</th>
 							<th>Responsable</th>
 							<th>Entrada</th>
 							<th>Finalizado</th>
@@ -63,7 +63,7 @@
 							$fila->Nucleo,
 							$fila->Departamento,
 							$fila->falla,
-							$fila->observacion,
+							$fila->observacion_reaparacion,
 							$fila->Nombre,
 							$d,
 							$m,
@@ -120,7 +120,7 @@
 							<th>Nucleo</th>
 							<th>Departamento</th>
 							<th>Falla</th>
-							<th>Observacion</th>
+							<th>Observación de reparación</th>
 							<th>Responsable</th>
 							<th>Entrada</th>
 							<th>Finalizado</th>
@@ -146,7 +146,7 @@
 							$fila->Nucleo,
 							$fila->Departamento,
 							$fila->falla,
-							$fila->observacion,
+							$fila->observacion_reaparacion,
 							$fila->Nombre,
 							$d,
 							$m,
