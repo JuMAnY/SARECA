@@ -1,6 +1,5 @@
 <?php
-	require('../php/conexion/conexion.php');
-	
+
 	$sql = "SELECT * FROM reparacion WHERE Estado = 1";
 	$res = $conectar->query($sql);
 	
@@ -67,5 +66,4 @@
 		</div>
 <?php
 	}
-	$conectar->close();
 ?>

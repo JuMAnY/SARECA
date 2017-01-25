@@ -62,7 +62,7 @@
 		<div id="footer">
 			<div class="container">
 				<p class="muted credit">
-					Todos los derechos reservados &copy 2015 <br>
+					Todos los derechos reservados &copy; 2015 <br>
 					SARECA | <b>JuMAnY</b>
 				</p>
 			</div>

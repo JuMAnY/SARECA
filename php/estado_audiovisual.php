@@ -9,6 +9,8 @@
 
 	$sql = "UPDATE equipo_audiovisual SET Estado = '$e' WHERE Serial = '$serial'";
 	$res = $conectar->query($sql);
+	//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+	bitacora($conectar,$sql);
 	
 	if(!$res){
 		header('Location: ../html/consulta_audiovisuales_f.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);

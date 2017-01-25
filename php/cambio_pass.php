@@ -7,6 +7,8 @@
 	
 	$sql = "UPDATE usuario SET Contrasena = '$pass' WHERE Id = '$id'";
 	$res = $conectar->query($sql);
+	//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+	bitacora($conectar,$sql);
 	
 	if(!$res){
 		header('Location: ../html/cambio_pass_f.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);

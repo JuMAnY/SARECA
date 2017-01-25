@@ -1,4 +1,7 @@
-<?php require('../php/sesion/valida_sesion.php');?>
+<?php
+require('../php/sesion/valida_sesion.php');
+require('../php/conexion/conexion.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -49,7 +52,7 @@
 			</div>
 		</div>
 		<!-- FIN DEL PIE DE PAGINA -->
-
+		<?php $conectar->close(); ?>
 		<script src="../js/jquery-1.11.3.min.js"></script>
 		<script src="../js/jquery.dataTables.min.js"></script>
 		<script src="../js/dataTables.bootstrap.min.js"></script>

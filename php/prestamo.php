@@ -12,8 +12,12 @@
 	if (isset($_POST['observacion'])) {
 		$observacion = $_POST['observacion'];
 		$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, hora_estimada_devolucion, destino, Id_usuario_prestador, Cedula, carrera, Estado, observacion_prestamo) VALUES ('$serial','$fe_pre',curTime(),'$hora_estimada','$destino','$id_user','$cedula','$carrera',2,'$observacion')";
+		//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+		bitacora($conectar,$sql);
 	} else {
 		$sql = "INSERT INTO prestamo (Serial_equipo, Fecha_prestamo, hora_prestamo, hora_estimada_devolucion, destino, Id_usuario_prestador, Cedula, carrera, Estado) VALUES ('$serial','$fe_pre',curTime(),'$hora_estimada','$destino','$id_user','$cedula','$carrera',2)";
+		//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+		bitacora($conectar,$sql);
 	}
 
 	$res = $conectar->query($sql);
@@ -25,6 +29,8 @@
 	}else{
 		$sql = "UPDATE equipo_audiovisual SET Estado = 2 WHERE Serial = '$serial'";
 		$res = $conectar->query($sql);
+		//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+		bitacora($conectar,$sql);
 		
 		if(!$res){
 			header('Location: ../html/prestamo_f.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);

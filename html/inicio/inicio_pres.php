@@ -1,5 +1,4 @@
 <?php
-	require('../php/conexion/conexion.php');
 	
 	$sql = "SELECT *
 			FROM equipo_audiovisual
@@ -86,5 +85,4 @@
 
 <?php
 	}
-	$conectar->close();
 ?>

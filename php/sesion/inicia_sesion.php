@@ -17,6 +17,10 @@
 		$_SESSION['id'] = $id;
 		$_SESSION['nombre'] = $fila->Nombre;
 		$_SESSION['nivel'] = $fila->Nivel;
+		//SE ALMACENA LA SENTENCIA SQL
+		$_SESSION["sentencia"] = $sql;
+		//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+		bitacora($conectar);
 		$resultado->free();
 		$conectar->close();
 		header('Location: ../../html/inicio.php');

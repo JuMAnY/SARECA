@@ -8,6 +8,8 @@
 	
 	$sql = "INSERT INTO persona (Cedula, Nombre, cargo) VALUES ('$cedula','$nombre','$cargo')";
 	$res = $conectar->query($sql);
+	//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+	bitacora($conectar,$sql);
 	
 	if(!$res){
 		if ($conectar->errno == 1062) {

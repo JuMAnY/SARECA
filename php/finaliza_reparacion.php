@@ -14,6 +14,8 @@
 			WHERE Serial_equipo = '$serial'
 			AND Fecha_entrada = '$fecha_entrada'
 			AND Estado = 1";
+	//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+	bitacora($conectar,$sql);
 	$res = $conectar->query($sql);
 	
 	if(!$res){

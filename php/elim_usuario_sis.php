@@ -6,6 +6,8 @@
 	
 	$sql = "DELETE FROM usuario WHERE Id  = '$user'";
 	$res = $conectar->query($sql);
+	//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+	bitacora($conectar,$sql);
 	
 	if(!$res){
 		header('Location: ../html/elim_usuario_sis_f.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);

@@ -98,6 +98,8 @@ if ($id_usuario != "") {
 
 		$sql = "UPDATE usuario SET Contrasena = '$encrypt_pass' WHERE Id = '$id_usuario'";
 		$conectar->query($sql);
+		//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+		bitacora($conectar,$sql);
 
 		if ($conectar->affected_rows > 0) {
 			$submit = enviarEmail($usuario->correo, $password);

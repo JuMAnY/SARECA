@@ -12,8 +12,12 @@
 	if (isset($_POST['inf_adic'])) {
 		$inf_adic = $_POST['inf_adic'];
 		$sql = "INSERT INTO equipo_audiovisual (Serial, tipo, numero, rbn, modelo, marca, inf_adic, Estado) VALUES ('$serial','$tipo','$numero','$rbn','$modelo','$marca','$inf_adic',1)";
+			//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+			bitacora($conectar,$sql);
 	} else {
 		$sql = "INSERT INTO equipo_audiovisual (Serial, tipo, numero, rbn, modelo, marca, Estado) VALUES ('$serial','$tipo','$numero','$rbn','$modelo','$marca',1)";
+			//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+			bitacora($conectar,$sql);
 	}
 
 	$res = $conectar->query($sql);

@@ -12,6 +12,8 @@
 	$responsable = $_SESSION['id'];
 	
 	$sql = "INSERT INTO reparacion (Serial_equipo, Nucleo, Departamento, falla, Estado, observacion, Fecha_entrada, resultado, responsable) VALUES ('$serial','$nucleo','$departamento','$descripcion',1,'$observacion','$fecha_entrada',1,'$responsable')";
+	//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
+	bitacora($conectar,$sql);
 	$res = $conectar->query($sql);
 	
 	if (!$res) {
