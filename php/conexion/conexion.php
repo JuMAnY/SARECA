@@ -9,7 +9,7 @@
 
 		$usuario = $_SESSION["id"];
 		$nombre = $_SESSION["nombre"];
-		$sentencia = $sql_e;
+		$sentencia = mysql_real_escape_string($sql_e);
 
 		$sql = "INSERT INTO bitacora (id_usuario,nombre,sentencia)
 				VALUES ('$usuario','$nombre','$sentencia')";

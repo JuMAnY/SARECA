@@ -35,7 +35,7 @@ function compara_campos(id1,id2){
 
 /*****************************************************************************************************************************/
 function carga_documento(campo,div,doc,variables){
-	if(campo==''){
+	if(campo == ''){
 		document.getElementById(div).innerHTML="";
 		return;
 	}
@@ -50,6 +50,7 @@ function carga_documento(campo,div,doc,variables){
 	xmlhttp.onreadystatechange=function(){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200){
 			document.getElementById(div).innerHTML=xmlhttp.responseText;
+			paginacion_tabla();
 		}
 	}
 	xmlhttp.open("POST",doc,true);

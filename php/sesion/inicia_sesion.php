@@ -20,7 +20,7 @@
 		//SE ALMACENA LA SENTENCIA SQL
 		$_SESSION["sentencia"] = $sql;
 		//LLAMADO DE LA FUNCION QUE REGISTRA LA BITACORA DE ACCIONES DEL USUARIO
-		bitacora($conectar);
+		bitacora($conectar,$sql);
 		$resultado->free();
 		$conectar->close();
 		header('Location: ../../html/inicio.php');
