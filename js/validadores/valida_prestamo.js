@@ -11,8 +11,9 @@ $(function(){
 	});
 
 	$('.lista_prestador').delegate('li','click',function(){
-		var texto = $(this).text(); 
-		if (texto == 'Esta cédula no esta registrada') {
+		var texto = $(this).text();
+		var msg = texto.split('.', 1);
+		if (msg == 'Esta cédula no esta registrada') {
 			texto = '';
 		}
 		$('#cedula').val(texto);
