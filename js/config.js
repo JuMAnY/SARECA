@@ -29,6 +29,16 @@
     $('.debug-url').html('<strong>' + $(this).find('.btn-ok').attr('msj') + '</strong>');
   });
 
+  //Enviar formulario desde modal con inputs hidden
+  $('#form-action').on('show.bs.modal', function(e) {
+    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    //Se capturan valores desde data-msj para enviar por formulario
+    $(this).find('.btn-ok').attr('var1', $(e.relatedTarget).data('var1'));
+    $(this).find('.btn-ok').attr('var2', $(e.relatedTarget).data('var2'));
+    $('#serial').val($(this).find('.btn-ok').attr('var1'));
+    $('#estado').val($(this).find('.btn-ok').attr('var2'));
+  });
+
   // $('#myModal').modal('show');
 
   //PopOver

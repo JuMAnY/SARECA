@@ -52,7 +52,7 @@
 								<td>%s</td>
 								<td>%s</td>
 								<td>%s</td>
-								<td><a href="../php/estado_audiovisual.php?s=%s&e=%d" class="btn btn-primary">Inactivar</a></td>
+								<td><a href="#" class="launch-modal btn btn-primary" data-toggle="modal" data-target="#form-action" data-var1="%s" data-var2="%d">Inactivar</a></td>
 							</tr>',
 							$fila->Serial,
 							$tipo,
@@ -111,18 +111,28 @@
 							<th>Marca</th>
 							<th>Modelo</th>
 							<th>Inf. Adicional</th>
+							<th>Motivo</th>
 							<th>Acción</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php
 					while ($fila = $res->fetch_object()) {
+						$sql = "SELECT motivo
+								FROM motivo_equipo_inactivo
+								WHERE equipo_serial = '$fila->Serial'
+								ORDER BY fecha
+								DESC LIMIT 1";
+						$res_motivo = $conectar->query($sql);
+						$fila_motivo = $res_motivo->fetch_object();
+
 						$tipo = ($fila->tipo == 1) ? 'VideoBeam' : 'Retroproyector';
 						printf('
 							<tr>
 								<td>%s</td>
 								<td>%s</td>
 								<td>%d</td>
+								<td>%s</td>
 								<td>%s</td>
 								<td>%s</td>
 								<td>%s</td>
@@ -136,6 +146,7 @@
 							$fila->marca,
 							$fila->modelo,
 							$fila->inf_adic,
+							$fila_motivo->motivo,
 							$fila->Serial,
 							$fila->Estado
 						);
@@ -220,30 +231,3 @@
 	}
 	$conectar->close();
 ?>
-
-
-<!-- INICIO DEL MODAL -->
-<div class="modal fade" id="confirm-action" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title" id="myModalLabel">Confirmar Acción</h4>
-			</div>
-
-			<div class="modal-body">
-				<div class="alert alert-dismissible alert-warning">
-					<h4>¡Advertencia!</h4>
-					<p class="debug-url"></p>
-				</div>
-			</div>
-
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-				<a class="btn btn-danger btn-ok">Aceptar</a>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- FIN DEL MODAL -->
