@@ -34,7 +34,7 @@
 										<div class="form-group">
 											<label for="cedula" class="col-lg-2 control-label">Cédula</label>
 											<div class="col-lg-10">
-												<input name="cedula"class="form-control" id="cedula" placeholder="Cédula" type="number" title="Debe ingresar el número de cédula" required>
+												<input name="cedula"class="form-control" value="<?php if (isset($_GET['c'])) echo $_GET['c'];?>" id="cedula" placeholder="Cédula" type="number" title="Debe ingresar el número de cédula" required>
 											</div>
 										</div>
 										<div class="form-group">
