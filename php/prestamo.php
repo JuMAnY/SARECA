@@ -2,7 +2,7 @@
 	require('sesion/valida_sesion.php');
 	require('conexion/conexion.php');
 	
-	$cedula = $_POST['cedula'];
+	list($cedula, ,) = explode(' ', $_POST['cedula']);
 	$carrera = $_POST['carrera'];
 	$serial = $_POST['Serial_equipo'];
 	$hora_estimada = $_POST['hora_estimada_devolucion'];

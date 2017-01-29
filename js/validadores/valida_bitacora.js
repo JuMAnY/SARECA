@@ -28,42 +28,14 @@ function paginacion_tabla() {
     } );
 }
 
-// function carga_documento2(campo, div, doc, variables){
-// 	alert("Entra6.1");
-//     if(campo == '') {
-//     	alert("Entra6.1.1");
-//         $("#" + div).html("");
-//         return false;
-//     }
-//     alert("Entra6.2");
-//     $.ajax({
-//         url: doc,
-//         data: variables,
-//         type: "POST",
-//         success: function (responseText) {
-//         	alert("Entra6.3.1");
-//             $(div).html(responseText);
-//             alert("Entra6.3.2");
-//             paginacion_tabla();
-//             alert("Entra6.3.3");
-//         }
-//     });
-//     alert("Entra6.4");
-// }
-
 function manejador_carga(){
 	var user = document.getElementById("u").value;
-	var mes = document.getElementById("mes");
-	var ano = document.getElementById("ano");
-	if (mes.value == "") {
-		mes.selectedIndex = 0;
-		var campo = mes.value;
+	var mes = document.getElementById("mes").value;
+	var ano = document.getElementById("ano").value;
+	if (mes == "" || ano == "") {
+		var campo = '';
 	}
-	if (ano.value == "") {
-		ano.selectedIndex = 0;
-		var campo = ano.value;
-	}
-	var variables = "u="+user+"&m="+mes.value+"&a="+ano.value;
+	var variables = "u="+user+"&m="+mes+"&a="+ano;
 	carga_documento(campo,"carga","../php/tabla_bitacora.php",variables);
 }
 

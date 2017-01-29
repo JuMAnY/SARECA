@@ -40,10 +40,12 @@ function conslt_bitacora($cnx_bd){
 	return $resultado;
 }
 
-if ($_POST['u'] == 'todos')
-	$res = conslt_bitacora($conectar);
-else
-	$res = conslt_bitacora_user($conectar);
+// if ($_POST['u'] == 'todos')
+// 	$res = conslt_bitacora($conectar);
+// else
+// 	$res = conslt_bitacora_user($conectar);
+
+$res = ($_POST['u'] == 'todos') ? conslt_bitacora($conectar) : conslt_bitacora_user($conectar);
 
 $conectar->close();
 	

@@ -2,22 +2,13 @@
 	require('../php/sesion/valida_sesion.php');
 	require('../php/conexion/conexion.php');
 
-	$sql = "SELECT Serial FROM equipo_audiovisual WHERE Estado = 1";
+	$sql = "SELECT Serial, tipo, marca FROM equipo_audiovisual WHERE Estado = 1";
 	$res_equi = $conectar->query($sql);
 	
 	if(!$res_equi){
 		echo '<h1>ERROR: </h1>'.$conectar->error;
 		$conectar->close();
 		exit();
-	}else{
-		$sql = "SELECT Cedula FROM persona";
-		$res_per = $conectar->query($sql);
-	
-		if(!$res_per){
-			echo '<h1>ERROR: </h1>'.$conectar->error;
-			$conectar->close();
-			exit();
-		}
 	}
 ?>
 <!DOCTYPE html>
@@ -62,16 +53,10 @@
 										<fieldset>
 											<legend><span class="glyphicon glyphicon-pencil"> Registro</legend>
 											<div class="form-group">
-												<label for="select" class="col-lg-2 control-label">Cédula</label>
+												<label for="cedula" class="col-lg-2 control-label">Cédula</label>
 												<div class="col-lg-10">
-													<select name="cedula" class="form-control" id="cedula" title="Ingrese la cédula del prestamista" required>
-														<option></option>
-														<?php
-														while ($fila_per = $res_per->fetch_object())
-															echo '<option value="'.$fila_per->Cedula.'">'.$fila_per->Cedula.'</option>';
-														$res_per->free();
-														?>
-													</select>
+													<input name="cedula" class="form-control" id="cedula" placeholder="Cédula" type="text" title="Ingrese la cédula" required>
+													<ul class="lista_prestador datalist"></ul>
 												</div>
 											</div>
 											<div class="form-group">
@@ -86,8 +71,10 @@
 													<select name="Serial_equipo" class="form-control" id="Serial_equipo" title="Debe elegir el serial del equipo a prestar" required>
 														<option></option>
 														<?php
-														while ($fila_equi = $res_equi->fetch_object())
-															echo '<option value="'.$fila_equi->Serial.'">'.$fila_equi->Serial.'</option>';
+														while ($fila_equi = $res_equi->fetch_object()) {
+															$tipo = ($fila_equi->tipo == 1) ? 'Video Beam' : 'Retroproyector';
+															echo '<option value="'.$fila_equi->Serial.'">'.$fila_equi->Serial.' - '.$tipo.' '.$fila_equi->marca.'</option>';
+														}
 														$res_equi->free();
 														$conectar->close();
 														?>
@@ -135,7 +122,7 @@
 		<div id="footer">
 			<div class="container">
 				<p class="muted credit">
-					Todos los derechos reservados &copy 2015 <br>
+					Todos los derechos reservados &copy; 2015 <br>
 					SARECA | <b>JuMAnY</b>
 				</p>
 			</div>
@@ -144,6 +131,9 @@
 
 		<script src="../js/jquery-1.11.3.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/jquery-ui.min.js"></script>
 		<script src="../js/config.js"></script>
+		<script src="../js/validadores/funciones.js"></script>
+		<script src="../js/validadores/valida_prestamo.js"></script>
 	</body>
 </html>

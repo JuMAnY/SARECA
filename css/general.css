@@ -54,3 +54,27 @@ body {
 code {
 	font-size: 80%;
 }
+
+.datalist {
+    list-style:none;
+	margin-left: -38px;
+	position: absolute;
+	width: 101%;
+	z-index: 2;
+}
+
+.datalist li {
+	background-color: #fff;
+	box-shadow: 1px 1px 0px #555;
+	cursor: pointer;
+    display:block;
+	line-height: 30px;
+	padding: 5px 5px;
+    text-decoration:none;
+    width:100%;
+}
+
+.datalist li:hover { 
+    background-color:#2C3E50;
+    color: #FFF;
+}
