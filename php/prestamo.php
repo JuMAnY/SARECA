@@ -23,9 +23,15 @@
 	$res = $conectar->query($sql);
 	
 	if(!$res){
-		header('Location: ../html/prestamo_f.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);
-		$conectar->close();
-		exit();
+		if ($conectar->errno == 1452) {
+			header('Location: ../html/prestamo_f.php?m=2&e=Intenta realizar un prestamo a una persona no registrada.<br />N° de error: '.$conectar->errno);
+			$conectar->close();
+			exit();
+		} else {
+			header('Location: ../html/prestamo_f.php?m=2&e='.$conectar->error.', N°: '.$conectar->errno);
+			$conectar->close();
+			exit();
+		}
 	}else{
 		$sql = "UPDATE equipo_audiovisual SET Estado = 2 WHERE Serial = '$serial'";
 		$res = $conectar->query($sql);
